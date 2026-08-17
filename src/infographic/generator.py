@@ -47,8 +47,8 @@ def create_infographic(item: dict, output_path: str) -> str:
     rounded(draw, (60, 56, 230, 104), radius=18, fill=(46,22,86), outline=PURPLE, width=1)
     draw.text((145 - draw.textbbox((0,0), tag, font=tag_font)[2]/2, 67), tag, font=tag_font, fill=WHITE)
 
-    cheat_font = fit_font("TECH CHEAT SHEET", 220, 18, 12, bold=False)
-    draw.text((1010-text_width(draw,"TECH CHEAT SHEET",cheat_font), 68), "TECH CHEAT SHEET", font=cheat_font, fill=MUTED)
+    cheat_font = fit_font("CodeWithKambojShubham", 220, 18, 12, bold=False)
+    draw.text((1010-text_width(draw,"CodeWithKambojShubham",cheat_font), 68), "CodeWithKambojShubham", font=cheat_font, fill=MUTED)
 
     # Title / subtitle
     title_bottom = draw_title(draw, content["title"])
