@@ -52,49 +52,49 @@
     "336b3626272624f1": {
       "id": "336b3626272624f1",
       "topic": "AWS S3",
-      "status": "PENDING",
-      "attempts": 0,
+      "status": "GENERATED",
+      "attempts": 1,
       "created_at": "2026-08-17T11:58:07.894357+00:00",
-      "updated_at": "2026-08-17T11:58:07.894358+00:00",
+      "updated_at": "2026-08-17T12:07:25.488229+00:00",
       "instagram_url": null,
       "linkedin_url": null,
-      "image_path": null,
+      "image_path": "generated/336b3626272624f1.png",
       "error": null
     },
     "cfdae3b106f0f717": {
       "id": "cfdae3b106f0f717",
       "topic": "MongoDB Indexing",
-      "status": "PENDING",
-      "attempts": 0,
+      "status": "GENERATED",
+      "attempts": 1,
       "created_at": "2026-08-17T11:58:07.894361+00:00",
-      "updated_at": "2026-08-17T11:58:07.894362+00:00",
+      "updated_at": "2026-08-17T12:07:25.562499+00:00",
       "instagram_url": null,
       "linkedin_url": null,
-      "image_path": null,
+      "image_path": "generated/cfdae3b106f0f717.png",
       "error": null
     },
     "08b017f214b07007": {
       "id": "08b017f214b07007",
       "topic": "Docker Networking",
-      "status": "PENDING",
-      "attempts": 0,
+      "status": "GENERATED",
+      "attempts": 1,
       "created_at": "2026-08-17T11:58:07.894364+00:00",
-      "updated_at": "2026-08-17T11:58:07.894366+00:00",
+      "updated_at": "2026-08-17T12:07:25.634736+00:00",
       "instagram_url": null,
       "linkedin_url": null,
-      "image_path": null,
+      "image_path": "generated/08b017f214b07007.png",
       "error": null
     },
     "fe6b79bf8a64ad94": {
       "id": "fe6b79bf8a64ad94",
       "topic": "Microservices Circuit Breaker",
-      "status": "PENDING",
-      "attempts": 0,
+      "status": "GENERATED",
+      "attempts": 1,
       "created_at": "2026-08-17T11:58:07.894368+00:00",
-      "updated_at": "2026-08-17T11:58:07.894370+00:00",
+      "updated_at": "2026-08-17T12:07:25.707251+00:00",
       "instagram_url": null,
       "linkedin_url": null,
-      "image_path": null,
+      "image_path": "generated/fe6b79bf8a64ad94.png",
       "error": null
     },
     "db36df01c1dbd7da": {
@@ -122,5 +122,5 @@
       "error": null
     }
   },
-  "last_run": "2026-08-17T11:58:08.195416+00:00"
+  "last_run": "2026-08-17T12:07:25.707809+00:00"
 }
