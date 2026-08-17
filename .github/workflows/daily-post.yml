@@ -1,37 +1,70 @@
 name: Daily Social Content
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: "45 0 * * *" # 06:15 IST
+    - cron: "15 0 * * *"  # 06:15 IST
+
 permissions:
   contents: write
+
 jobs:
-  run:
+  automate:
     runs-on: ubuntu-latest
     env:
-      TZ: Asia/Kolkata
       DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
       POST_LIMIT: "4"
       TOPICS_FILE: topics/topics.docx
       STATE_FILE: state.json
       OUTPUT_DIR: generated
+
       INSTAGRAM_ENABLED: ${{ vars.INSTAGRAM_ENABLED || 'false' }}
-      LINKEDIN_ENABLED: ${{ vars.LINKEDIN_ENABLED || 'false' }}
+      INSTAGRAM_GRAPH_BASE_URL: ${{ vars.INSTAGRAM_GRAPH_BASE_URL || '' }}
       INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
       INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+
+      LINKEDIN_ENABLED: ${{ vars.LINKEDIN_ENABLED || 'false' }}
       LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-      LINKEDIN_AUTHOR_ID: ${{ secrets.LINKEDIN_AUTHOR_ID }}
-      PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL }}
+      LINKEDIN_AUTHOR_URN: ${{ vars.LINKEDIN_AUTHOR_URN || '' }}
+      LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202606' }}
+
+      PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/generated
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: "3.11"}
-      - run: pip install -r requirements.txt
-      - run: python -m src.main
-      - name: Commit state and images
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate images and content
+        run: python -m src.main
+
+      - name: Commit generated assets before publishing
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add generated/ state.json
+          git diff --cached --quiet || git commit -m "chore: generate daily social content"
+          git push
+
+      - name: Wait for generated raw assets
+        if: env.DRY_RUN != 'true'
+        run: sleep 10
+
+      - name: Publish and update status
+        if: env.DRY_RUN != 'true'
+        run: python -m src.main
+
+      - name: Commit final status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json generated/
-          git diff --cached --quiet || git commit -m "chore: update daily social content state"
+          git diff --cached --quiet || git commit -m "chore: update publish status"
           git push

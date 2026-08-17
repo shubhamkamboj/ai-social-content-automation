@@ -1,0 +1,3 @@
+Generated sample: samples/kafka-consumer-group.png
+Expected size: 1080 x 1800
+Footer: intentionally omitted
