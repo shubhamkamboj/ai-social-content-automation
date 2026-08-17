@@ -1,32 +1,24 @@
 from __future__ import annotations
-
 import os
 from dataclasses import dataclass
+from dotenv import load_dotenv
+load_dotenv()
 
-
-def required(name: str) -> str:
+def _bool(name: str, default: bool) -> bool:
     value = os.getenv(name)
-    if not value:
-        raise RuntimeError(f"Missing required environment variable: {name}")
-    return value
-
+    return default if value is None else value.strip().lower() in {"1","true","yes","y","on"}
 
 @dataclass(frozen=True)
-class Settings:
+class Config:
     topics_file: str = os.getenv("TOPICS_FILE", "topics/topics.docx")
     state_file: str = os.getenv("STATE_FILE", "state.json")
-    daily_limit: int = int(os.getenv("DAILY_POST_LIMIT", "4"))
-    dry_run: bool = os.getenv("DRY_RUN", "true").lower() == "true"
-    github_owner: str = os.getenv("GITHUB_OWNER", "")
-    github_repo: str = os.getenv("GITHUB_REPO", "")
-    github_branch: str = os.getenv("GITHUB_BRANCH", "main")
-    public_image_base_url: str = os.getenv("PUBLIC_IMAGE_BASE_URL", "")
-    openai_model: str = os.getenv("OPENAI_MODEL", "gpt-5.6")
-    openai_image_model: str = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-1")
-    instagram_api_version: str = os.getenv("INSTAGRAM_API_VERSION", "v24.0")
-    instagram_user_id: str = os.getenv("INSTAGRAM_USER_ID", "")
-    linkedin_version: str = os.getenv("LINKEDIN_VERSION", "202601")
-    linkedin_author_urn: str = os.getenv("LINKEDIN_AUTHOR_URN", "")
-
-
-settings = Settings()
+    output_dir: str = os.getenv("OUTPUT_DIR", "generated")
+    post_limit: int = int(os.getenv("POST_LIMIT", "4"))
+    dry_run: bool = _bool("DRY_RUN", True)
+    instagram_enabled: bool = _bool("INSTAGRAM_ENABLED", False)
+    linkedin_enabled: bool = _bool("LINKEDIN_ENABLED", False)
+    instagram_access_token: str = os.getenv("INSTAGRAM_ACCESS_TOKEN", "")
+    instagram_account_id: str = os.getenv("INSTAGRAM_ACCOUNT_ID", "")
+    linkedin_access_token: str = os.getenv("LINKEDIN_ACCESS_TOKEN", "")
+    linkedin_author_id: str = os.getenv("LINKEDIN_AUTHOR_ID", "")
+    public_base_url: str = os.getenv("PUBLIC_BASE_URL", "")
