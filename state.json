@@ -5,85 +5,85 @@
       "id": "ee6066fee1cc5ed4",
       "topic": "Java HashMap Internal Working",
       "category": "java",
-      "status": "GENERATED",
-      "attempts": 6,
+      "status": "FAILED",
+      "attempts": 7,
       "created_at": "2026-08-17T12:39:48.288158+00:00",
-      "updated_at": "2026-08-18T01:52:08.358282+00:00",
+      "updated_at": "2026-08-18T10:31:14.524514+00:00",
       "image_path": "generated/ee6066fee1cc5ed4.png",
       "instagram": {
-        "status": "PENDING",
+        "status": "FAILED",
         "url": null,
-        "error": null
+        "error": "Instagram configuration missing."
       },
       "linkedin": {
         "status": "PENDING",
         "url": null,
         "error": null
       },
-      "error": null
+      "error": "Instagram configuration missing."
     },
     "a2f6ea650322f032": {
       "id": "a2f6ea650322f032",
       "topic": "Spring Boot @Transactional",
       "category": "spring",
-      "status": "GENERATED",
-      "attempts": 6,
+      "status": "FAILED",
+      "attempts": 7,
       "created_at": "2026-08-17T12:39:48.288196+00:00",
-      "updated_at": "2026-08-18T01:52:10.263873+00:00",
+      "updated_at": "2026-08-18T10:31:16.400318+00:00",
       "image_path": "generated/a2f6ea650322f032.png",
       "instagram": {
-        "status": "PENDING",
+        "status": "FAILED",
         "url": null,
-        "error": null
+        "error": "Instagram configuration missing."
       },
       "linkedin": {
         "status": "PENDING",
         "url": null,
         "error": null
       },
-      "error": null
+      "error": "Instagram configuration missing."
     },
     "7c79625899312660": {
       "id": "7c79625899312660",
       "topic": "Kafka Consumer Group",
       "category": "kafka",
-      "status": "GENERATED",
-      "attempts": 6,
+      "status": "FAILED",
+      "attempts": 7,
       "created_at": "2026-08-17T12:39:48.288209+00:00",
-      "updated_at": "2026-08-18T01:52:12.246885+00:00",
+      "updated_at": "2026-08-18T10:31:18.350513+00:00",
       "image_path": "generated/7c79625899312660.png",
       "instagram": {
-        "status": "PENDING",
+        "status": "FAILED",
         "url": null,
-        "error": null
+        "error": "Instagram configuration missing."
       },
       "linkedin": {
         "status": "PENDING",
         "url": null,
         "error": null
       },
-      "error": null
+      "error": "Instagram configuration missing."
     },
     "fafbe7f16718530a": {
       "id": "fafbe7f16718530a",
       "topic": "Redis Caching",
       "category": "redis",
-      "status": "GENERATED",
-      "attempts": 6,
+      "status": "FAILED",
+      "attempts": 7,
       "created_at": "2026-08-17T12:39:48.288215+00:00",
-      "updated_at": "2026-08-18T01:52:14.154365+00:00",
+      "updated_at": "2026-08-18T10:31:20.266222+00:00",
       "image_path": "generated/fafbe7f16718530a.png",
       "instagram": {
-        "status": "PENDING",
+        "status": "FAILED",
         "url": null,
-        "error": null
+        "error": "Instagram configuration missing."
       },
       "linkedin": {
         "status": "PENDING",
         "url": null,
         "error": null
       },
-      "error": null
+      "error": "Instagram configuration missing."
     },
     "db7bbe8365de291d": {
       "id": "db7bbe8365de291d",
@@ -212,5 +212,5 @@
       "error": null
     }
   },
-  "last_run": "2026-08-18T01:52:14.154812+00:00"
+  "last_run": "2026-08-18T10:31:20.266951+00:00"
 }
