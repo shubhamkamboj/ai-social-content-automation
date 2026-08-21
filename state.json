@@ -47,18 +47,18 @@
       "id": "7c79625899312660",
       "topic": "Kafka Consumer Group",
       "category": "kafka",
-      "status": "GENERATED",
-      "attempts": 1,
+      "status": "PUBLISHED",
+      "attempts": 2,
       "created_at": "2026-08-21T02:41:26.933179+00:00",
-      "updated_at": "2026-08-21T02:48:31.576162+00:00",
+      "updated_at": "2026-08-21T02:49:05.228628+00:00",
       "image_path": "generated/7c79625899312660.png",
       "instagram": {
-        "status": "PENDING",
-        "url": null,
+        "status": "PUBLISHED",
+        "url": "https://www.instagram.com/p/DcSTUPNm5kK/",
         "error": null
       },
       "linkedin": {
-        "status": "PENDING",
+        "status": "DISABLED",
         "url": null,
         "error": null
       },
@@ -2627,5 +2627,5 @@
       "error": null
     }
   },
-  "last_run": "2026-08-21T02:48:31.578597+00:00"
+  "last_run": "2026-08-21T02:49:05.231047+00:00"
 }
