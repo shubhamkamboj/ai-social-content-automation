@@ -6,9 +6,9 @@
       "topic": "Java HashMap Internal Working",
       "category": "java",
       "status": "FAILED",
-      "attempts": 13,
+      "attempts": 14,
       "created_at": "2026-08-17T12:39:48.288158+00:00",
-      "updated_at": "2026-08-21T01:58:55.867935+00:00",
+      "updated_at": "2026-08-21T01:59:14.656593+00:00",
       "image_path": "generated/ee6066fee1cc5ed4.png",
       "instagram": {
         "status": "FAILED",
@@ -27,9 +27,9 @@
       "topic": "Spring Boot @Transactional",
       "category": "spring",
       "status": "FAILED",
-      "attempts": 13,
+      "attempts": 14,
       "created_at": "2026-08-17T12:39:48.288196+00:00",
-      "updated_at": "2026-08-21T01:58:57.592673+00:00",
+      "updated_at": "2026-08-21T01:59:16.387037+00:00",
       "image_path": "generated/a2f6ea650322f032.png",
       "instagram": {
         "status": "FAILED",
@@ -48,9 +48,9 @@
       "topic": "Kafka Consumer Group",
       "category": "kafka",
       "status": "FAILED",
-      "attempts": 13,
+      "attempts": 14,
       "created_at": "2026-08-17T12:39:48.288209+00:00",
-      "updated_at": "2026-08-21T01:58:59.351125+00:00",
+      "updated_at": "2026-08-21T01:59:17.961280+00:00",
       "image_path": "generated/7c79625899312660.png",
       "instagram": {
         "status": "FAILED",
@@ -69,9 +69,9 @@
       "topic": "Redis Caching",
       "category": "redis",
       "status": "FAILED",
-      "attempts": 13,
+      "attempts": 14,
       "created_at": "2026-08-17T12:39:48.288215+00:00",
-      "updated_at": "2026-08-21T01:59:01.206690+00:00",
+      "updated_at": "2026-08-21T01:59:19.836209+00:00",
       "image_path": "generated/fafbe7f16718530a.png",
       "instagram": {
         "status": "FAILED",
@@ -212,5 +212,5 @@
       "error": null
     }
   },
-  "last_run": "2026-08-21T01:59:01.207341+00:00"
+  "last_run": "2026-08-21T01:59:19.836823+00:00"
 }
