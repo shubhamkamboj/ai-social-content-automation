@@ -8,7 +8,7 @@
       "status": "PUBLISHED",
       "attempts": 2,
       "created_at": "2026-08-21T02:59:59.489578+00:00",
-      "updated_at": "2026-08-21T03:09:02.169029+00:00",
+      "updated_at": "2026-08-21T03:11:06.604779+00:00",
       "image_path": "generated/a34b1bb46bda4c0e.png",
       "instagram": {
         "status": "PUBLISHED",
@@ -26,18 +26,18 @@
       "id": "554e79e652b29f3a",
       "topic": "Lambda",
       "category": "aws",
-      "status": "GENERATED",
-      "attempts": 1,
+      "status": "PUBLISHED",
+      "attempts": 2,
       "created_at": "2026-08-21T02:59:59.489597+00:00",
-      "updated_at": "2026-08-21T03:09:06.581973+00:00",
+      "updated_at": "2026-08-21T03:11:37.025499+00:00",
       "image_path": "generated/554e79e652b29f3a.png",
       "instagram": {
-        "status": "PENDING",
-        "url": null,
+        "status": "PUBLISHED",
+        "url": "https://www.instagram.com/reel/DcSV4RLjgMh/",
         "error": null
       },
       "linkedin": {
-        "status": "PENDING",
+        "status": "DISABLED",
         "url": null,
         "error": null
       },
@@ -51,7 +51,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489601+00:00",
-      "updated_at": "2026-08-21T03:09:02.169059+00:00",
+      "updated_at": "2026-08-21T03:11:06.604806+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -72,7 +72,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489604+00:00",
-      "updated_at": "2026-08-21T03:09:02.169063+00:00",
+      "updated_at": "2026-08-21T03:11:06.604809+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -93,7 +93,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489608+00:00",
-      "updated_at": "2026-08-21T03:09:02.169065+00:00",
+      "updated_at": "2026-08-21T03:11:06.604812+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -114,7 +114,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489611+00:00",
-      "updated_at": "2026-08-21T03:09:02.169068+00:00",
+      "updated_at": "2026-08-21T03:11:06.604815+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -135,7 +135,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489615+00:00",
-      "updated_at": "2026-08-21T03:09:02.169072+00:00",
+      "updated_at": "2026-08-21T03:11:06.604818+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -156,7 +156,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489622+00:00",
-      "updated_at": "2026-08-21T03:09:02.169081+00:00",
+      "updated_at": "2026-08-21T03:11:06.604827+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -177,7 +177,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489626+00:00",
-      "updated_at": "2026-08-21T03:09:02.169085+00:00",
+      "updated_at": "2026-08-21T03:11:06.604831+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -198,7 +198,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489629+00:00",
-      "updated_at": "2026-08-21T03:09:02.169089+00:00",
+      "updated_at": "2026-08-21T03:11:06.604834+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -219,7 +219,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489632+00:00",
-      "updated_at": "2026-08-21T03:09:02.169092+00:00",
+      "updated_at": "2026-08-21T03:11:06.604837+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -240,7 +240,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489636+00:00",
-      "updated_at": "2026-08-21T03:09:02.169095+00:00",
+      "updated_at": "2026-08-21T03:11:06.604840+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -261,7 +261,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489639+00:00",
-      "updated_at": "2026-08-21T03:09:02.169099+00:00",
+      "updated_at": "2026-08-21T03:11:06.604843+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -282,7 +282,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489642+00:00",
-      "updated_at": "2026-08-21T03:09:02.169103+00:00",
+      "updated_at": "2026-08-21T03:11:06.604847+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -303,7 +303,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489646+00:00",
-      "updated_at": "2026-08-21T03:09:02.169106+00:00",
+      "updated_at": "2026-08-21T03:11:06.604850+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -324,7 +324,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489651+00:00",
-      "updated_at": "2026-08-21T03:09:02.169109+00:00",
+      "updated_at": "2026-08-21T03:11:06.604853+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -345,7 +345,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489655+00:00",
-      "updated_at": "2026-08-21T03:09:02.169112+00:00",
+      "updated_at": "2026-08-21T03:11:06.604855+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -366,7 +366,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489658+00:00",
-      "updated_at": "2026-08-21T03:09:02.169115+00:00",
+      "updated_at": "2026-08-21T03:11:06.604858+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -387,7 +387,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489661+00:00",
-      "updated_at": "2026-08-21T03:09:02.169117+00:00",
+      "updated_at": "2026-08-21T03:11:06.604861+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -408,7 +408,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489664+00:00",
-      "updated_at": "2026-08-21T03:09:02.169120+00:00",
+      "updated_at": "2026-08-21T03:11:06.604864+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -429,7 +429,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489667+00:00",
-      "updated_at": "2026-08-21T03:09:02.169123+00:00",
+      "updated_at": "2026-08-21T03:11:06.604867+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -450,7 +450,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489671+00:00",
-      "updated_at": "2026-08-21T03:09:02.169126+00:00",
+      "updated_at": "2026-08-21T03:11:06.604870+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -471,7 +471,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489674+00:00",
-      "updated_at": "2026-08-21T03:09:02.169129+00:00",
+      "updated_at": "2026-08-21T03:11:06.604873+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -492,7 +492,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489679+00:00",
-      "updated_at": "2026-08-21T03:09:02.169133+00:00",
+      "updated_at": "2026-08-21T03:11:06.604876+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -513,7 +513,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489683+00:00",
-      "updated_at": "2026-08-21T03:09:02.169135+00:00",
+      "updated_at": "2026-08-21T03:11:06.604879+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -534,7 +534,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489686+00:00",
-      "updated_at": "2026-08-21T03:09:02.169138+00:00",
+      "updated_at": "2026-08-21T03:11:06.604882+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -555,7 +555,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489690+00:00",
-      "updated_at": "2026-08-21T03:09:02.169141+00:00",
+      "updated_at": "2026-08-21T03:11:06.604884+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -576,7 +576,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489693+00:00",
-      "updated_at": "2026-08-21T03:09:02.169144+00:00",
+      "updated_at": "2026-08-21T03:11:06.604887+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -597,7 +597,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489696+00:00",
-      "updated_at": "2026-08-21T03:09:02.169147+00:00",
+      "updated_at": "2026-08-21T03:11:06.604890+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -618,7 +618,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489699+00:00",
-      "updated_at": "2026-08-21T03:09:02.169150+00:00",
+      "updated_at": "2026-08-21T03:11:06.604892+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -639,7 +639,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489702+00:00",
-      "updated_at": "2026-08-21T03:09:02.169152+00:00",
+      "updated_at": "2026-08-21T03:11:06.604895+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -660,7 +660,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489705+00:00",
-      "updated_at": "2026-08-21T03:09:02.169155+00:00",
+      "updated_at": "2026-08-21T03:11:06.604898+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -681,7 +681,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489708+00:00",
-      "updated_at": "2026-08-21T03:09:02.169158+00:00",
+      "updated_at": "2026-08-21T03:11:06.604901+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -702,7 +702,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489712+00:00",
-      "updated_at": "2026-08-21T03:09:02.169161+00:00",
+      "updated_at": "2026-08-21T03:11:06.604906+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -723,7 +723,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489715+00:00",
-      "updated_at": "2026-08-21T03:09:02.169164+00:00",
+      "updated_at": "2026-08-21T03:11:06.604909+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -744,7 +744,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489718+00:00",
-      "updated_at": "2026-08-21T03:09:02.169167+00:00",
+      "updated_at": "2026-08-21T03:11:06.604912+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -765,7 +765,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489722+00:00",
-      "updated_at": "2026-08-21T03:09:02.169170+00:00",
+      "updated_at": "2026-08-21T03:11:06.604914+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -786,7 +786,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489725+00:00",
-      "updated_at": "2026-08-21T03:09:02.169175+00:00",
+      "updated_at": "2026-08-21T03:11:06.604917+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -807,7 +807,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489730+00:00",
-      "updated_at": "2026-08-21T03:09:02.169178+00:00",
+      "updated_at": "2026-08-21T03:11:06.604920+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -828,7 +828,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489735+00:00",
-      "updated_at": "2026-08-21T03:09:02.169181+00:00",
+      "updated_at": "2026-08-21T03:11:06.604923+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -849,7 +849,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489738+00:00",
-      "updated_at": "2026-08-21T03:09:02.169184+00:00",
+      "updated_at": "2026-08-21T03:11:06.604926+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -870,7 +870,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489741+00:00",
-      "updated_at": "2026-08-21T03:09:02.169188+00:00",
+      "updated_at": "2026-08-21T03:11:06.604929+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -891,7 +891,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489744+00:00",
-      "updated_at": "2026-08-21T03:09:02.169191+00:00",
+      "updated_at": "2026-08-21T03:11:06.604932+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -912,7 +912,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489748+00:00",
-      "updated_at": "2026-08-21T03:09:02.169194+00:00",
+      "updated_at": "2026-08-21T03:11:06.604935+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -933,7 +933,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489751+00:00",
-      "updated_at": "2026-08-21T03:09:02.169197+00:00",
+      "updated_at": "2026-08-21T03:11:06.604938+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -954,7 +954,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489753+00:00",
-      "updated_at": "2026-08-21T03:09:02.169200+00:00",
+      "updated_at": "2026-08-21T03:11:06.604941+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -975,7 +975,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489758+00:00",
-      "updated_at": "2026-08-21T03:09:02.169203+00:00",
+      "updated_at": "2026-08-21T03:11:06.604944+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -996,7 +996,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489761+00:00",
-      "updated_at": "2026-08-21T03:09:02.169206+00:00",
+      "updated_at": "2026-08-21T03:11:06.604947+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1017,7 +1017,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489764+00:00",
-      "updated_at": "2026-08-21T03:09:02.169209+00:00",
+      "updated_at": "2026-08-21T03:11:06.604950+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1038,7 +1038,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489767+00:00",
-      "updated_at": "2026-08-21T03:09:02.169212+00:00",
+      "updated_at": "2026-08-21T03:11:06.604953+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1059,7 +1059,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489771+00:00",
-      "updated_at": "2026-08-21T03:09:02.169215+00:00",
+      "updated_at": "2026-08-21T03:11:06.604956+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1080,7 +1080,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489773+00:00",
-      "updated_at": "2026-08-21T03:09:02.169218+00:00",
+      "updated_at": "2026-08-21T03:11:06.604958+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1101,7 +1101,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489776+00:00",
-      "updated_at": "2026-08-21T03:09:02.169220+00:00",
+      "updated_at": "2026-08-21T03:11:06.604961+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1122,7 +1122,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489779+00:00",
-      "updated_at": "2026-08-21T03:09:02.169223+00:00",
+      "updated_at": "2026-08-21T03:11:06.604964+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1143,7 +1143,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489784+00:00",
-      "updated_at": "2026-08-21T03:09:02.169225+00:00",
+      "updated_at": "2026-08-21T03:11:06.604967+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1164,7 +1164,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489787+00:00",
-      "updated_at": "2026-08-21T03:09:02.169228+00:00",
+      "updated_at": "2026-08-21T03:11:06.604969+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1185,7 +1185,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489792+00:00",
-      "updated_at": "2026-08-21T03:09:02.169231+00:00",
+      "updated_at": "2026-08-21T03:11:06.604972+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1206,7 +1206,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489795+00:00",
-      "updated_at": "2026-08-21T03:09:02.169234+00:00",
+      "updated_at": "2026-08-21T03:11:06.604975+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1227,7 +1227,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489799+00:00",
-      "updated_at": "2026-08-21T03:09:02.169236+00:00",
+      "updated_at": "2026-08-21T03:11:06.604978+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1248,7 +1248,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489802+00:00",
-      "updated_at": "2026-08-21T03:09:02.169239+00:00",
+      "updated_at": "2026-08-21T03:11:06.604981+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1269,7 +1269,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489806+00:00",
-      "updated_at": "2026-08-21T03:09:02.169241+00:00",
+      "updated_at": "2026-08-21T03:11:06.604984+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1290,7 +1290,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489809+00:00",
-      "updated_at": "2026-08-21T03:09:02.169244+00:00",
+      "updated_at": "2026-08-21T03:11:06.604987+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1311,7 +1311,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489812+00:00",
-      "updated_at": "2026-08-21T03:09:02.169247+00:00",
+      "updated_at": "2026-08-21T03:11:06.604989+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1332,7 +1332,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489815+00:00",
-      "updated_at": "2026-08-21T03:09:02.169250+00:00",
+      "updated_at": "2026-08-21T03:11:06.604992+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1353,7 +1353,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489818+00:00",
-      "updated_at": "2026-08-21T03:09:02.169253+00:00",
+      "updated_at": "2026-08-21T03:11:06.604995+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1374,7 +1374,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489821+00:00",
-      "updated_at": "2026-08-21T03:09:02.169256+00:00",
+      "updated_at": "2026-08-21T03:11:06.604998+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1395,7 +1395,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489826+00:00",
-      "updated_at": "2026-08-21T03:09:02.169259+00:00",
+      "updated_at": "2026-08-21T03:11:06.605000+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1416,7 +1416,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489829+00:00",
-      "updated_at": "2026-08-21T03:09:02.169262+00:00",
+      "updated_at": "2026-08-21T03:11:06.605003+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1437,7 +1437,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489832+00:00",
-      "updated_at": "2026-08-21T03:09:02.169264+00:00",
+      "updated_at": "2026-08-21T03:11:06.605006+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1458,7 +1458,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489835+00:00",
-      "updated_at": "2026-08-21T03:09:02.169267+00:00",
+      "updated_at": "2026-08-21T03:11:06.605009+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1479,7 +1479,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489839+00:00",
-      "updated_at": "2026-08-21T03:09:02.169270+00:00",
+      "updated_at": "2026-08-21T03:11:06.605011+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1500,7 +1500,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489842+00:00",
-      "updated_at": "2026-08-21T03:09:02.169272+00:00",
+      "updated_at": "2026-08-21T03:11:06.605014+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1521,7 +1521,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489845+00:00",
-      "updated_at": "2026-08-21T03:09:02.169275+00:00",
+      "updated_at": "2026-08-21T03:11:06.605016+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1542,7 +1542,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489848+00:00",
-      "updated_at": "2026-08-21T03:09:02.169278+00:00",
+      "updated_at": "2026-08-21T03:11:06.605019+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1563,7 +1563,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489850+00:00",
-      "updated_at": "2026-08-21T03:09:02.169281+00:00",
+      "updated_at": "2026-08-21T03:11:06.605022+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1584,7 +1584,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489854+00:00",
-      "updated_at": "2026-08-21T03:09:02.169283+00:00",
+      "updated_at": "2026-08-21T03:11:06.605024+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1605,7 +1605,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489859+00:00",
-      "updated_at": "2026-08-21T03:09:02.169286+00:00",
+      "updated_at": "2026-08-21T03:11:06.605027+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1626,7 +1626,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489863+00:00",
-      "updated_at": "2026-08-21T03:09:02.169289+00:00",
+      "updated_at": "2026-08-21T03:11:06.605030+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1647,7 +1647,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489866+00:00",
-      "updated_at": "2026-08-21T03:09:02.169291+00:00",
+      "updated_at": "2026-08-21T03:11:06.605032+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1668,7 +1668,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489869+00:00",
-      "updated_at": "2026-08-21T03:09:02.169294+00:00",
+      "updated_at": "2026-08-21T03:11:06.605035+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1689,7 +1689,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489872+00:00",
-      "updated_at": "2026-08-21T03:09:02.169296+00:00",
+      "updated_at": "2026-08-21T03:11:06.605037+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1710,7 +1710,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489875+00:00",
-      "updated_at": "2026-08-21T03:09:02.169299+00:00",
+      "updated_at": "2026-08-21T03:11:06.605040+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1731,7 +1731,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489878+00:00",
-      "updated_at": "2026-08-21T03:09:02.169302+00:00",
+      "updated_at": "2026-08-21T03:11:06.605043+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1752,7 +1752,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489881+00:00",
-      "updated_at": "2026-08-21T03:09:02.169305+00:00",
+      "updated_at": "2026-08-21T03:11:06.605046+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1773,7 +1773,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489884+00:00",
-      "updated_at": "2026-08-21T03:09:02.169308+00:00",
+      "updated_at": "2026-08-21T03:11:06.605048+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1794,7 +1794,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489887+00:00",
-      "updated_at": "2026-08-21T03:09:02.169310+00:00",
+      "updated_at": "2026-08-21T03:11:06.605053+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1815,7 +1815,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489893+00:00",
-      "updated_at": "2026-08-21T03:09:02.169314+00:00",
+      "updated_at": "2026-08-21T03:11:06.605056+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1836,7 +1836,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489896+00:00",
-      "updated_at": "2026-08-21T03:09:02.169316+00:00",
+      "updated_at": "2026-08-21T03:11:06.605059+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1857,7 +1857,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489899+00:00",
-      "updated_at": "2026-08-21T03:09:02.169321+00:00",
+      "updated_at": "2026-08-21T03:11:06.605062+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1878,7 +1878,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489902+00:00",
-      "updated_at": "2026-08-21T03:09:02.169324+00:00",
+      "updated_at": "2026-08-21T03:11:06.605064+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1899,7 +1899,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489904+00:00",
-      "updated_at": "2026-08-21T03:09:02.169326+00:00",
+      "updated_at": "2026-08-21T03:11:06.605067+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1920,7 +1920,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489907+00:00",
-      "updated_at": "2026-08-21T03:09:02.169329+00:00",
+      "updated_at": "2026-08-21T03:11:06.605070+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1941,7 +1941,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489910+00:00",
-      "updated_at": "2026-08-21T03:09:02.169331+00:00",
+      "updated_at": "2026-08-21T03:11:06.605072+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1962,7 +1962,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489912+00:00",
-      "updated_at": "2026-08-21T03:09:02.169333+00:00",
+      "updated_at": "2026-08-21T03:11:06.605074+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -1983,7 +1983,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489915+00:00",
-      "updated_at": "2026-08-21T03:09:02.169336+00:00",
+      "updated_at": "2026-08-21T03:11:06.605077+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2004,7 +2004,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489919+00:00",
-      "updated_at": "2026-08-21T03:09:02.169338+00:00",
+      "updated_at": "2026-08-21T03:11:06.605079+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2025,7 +2025,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489924+00:00",
-      "updated_at": "2026-08-21T03:09:02.169342+00:00",
+      "updated_at": "2026-08-21T03:11:06.605082+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2046,7 +2046,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489927+00:00",
-      "updated_at": "2026-08-21T03:09:02.169345+00:00",
+      "updated_at": "2026-08-21T03:11:06.605084+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2067,7 +2067,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489931+00:00",
-      "updated_at": "2026-08-21T03:09:02.169347+00:00",
+      "updated_at": "2026-08-21T03:11:06.605087+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2088,7 +2088,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489934+00:00",
-      "updated_at": "2026-08-21T03:09:02.169350+00:00",
+      "updated_at": "2026-08-21T03:11:06.605090+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2109,7 +2109,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489937+00:00",
-      "updated_at": "2026-08-21T03:09:02.169353+00:00",
+      "updated_at": "2026-08-21T03:11:06.605092+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2130,7 +2130,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489943+00:00",
-      "updated_at": "2026-08-21T03:09:02.169356+00:00",
+      "updated_at": "2026-08-21T03:11:06.605095+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2151,7 +2151,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489946+00:00",
-      "updated_at": "2026-08-21T03:09:02.169359+00:00",
+      "updated_at": "2026-08-21T03:11:06.605097+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2172,7 +2172,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489949+00:00",
-      "updated_at": "2026-08-21T03:09:02.169361+00:00",
+      "updated_at": "2026-08-21T03:11:06.605100+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2193,7 +2193,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489952+00:00",
-      "updated_at": "2026-08-21T03:09:02.169364+00:00",
+      "updated_at": "2026-08-21T03:11:06.605103+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2214,7 +2214,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489955+00:00",
-      "updated_at": "2026-08-21T03:09:02.169366+00:00",
+      "updated_at": "2026-08-21T03:11:06.605106+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2235,7 +2235,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489960+00:00",
-      "updated_at": "2026-08-21T03:09:02.169369+00:00",
+      "updated_at": "2026-08-21T03:11:06.605108+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2256,7 +2256,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489963+00:00",
-      "updated_at": "2026-08-21T03:09:02.169371+00:00",
+      "updated_at": "2026-08-21T03:11:06.605111+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2277,7 +2277,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489966+00:00",
-      "updated_at": "2026-08-21T03:09:02.169374+00:00",
+      "updated_at": "2026-08-21T03:11:06.605113+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2298,7 +2298,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489969+00:00",
-      "updated_at": "2026-08-21T03:09:02.169377+00:00",
+      "updated_at": "2026-08-21T03:11:06.605116+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2319,7 +2319,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489972+00:00",
-      "updated_at": "2026-08-21T03:09:02.169379+00:00",
+      "updated_at": "2026-08-21T03:11:06.605118+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2340,7 +2340,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489974+00:00",
-      "updated_at": "2026-08-21T03:09:02.169382+00:00",
+      "updated_at": "2026-08-21T03:11:06.605121+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2361,7 +2361,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489977+00:00",
-      "updated_at": "2026-08-21T03:09:02.169384+00:00",
+      "updated_at": "2026-08-21T03:11:06.605123+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2382,7 +2382,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489982+00:00",
-      "updated_at": "2026-08-21T03:09:02.169387+00:00",
+      "updated_at": "2026-08-21T03:11:06.605126+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2403,7 +2403,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489985+00:00",
-      "updated_at": "2026-08-21T03:09:02.169390+00:00",
+      "updated_at": "2026-08-21T03:11:06.605129+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2424,7 +2424,7 @@
       "status": "PENDING",
       "attempts": 0,
       "created_at": "2026-08-21T02:59:59.489988+00:00",
-      "updated_at": "2026-08-21T03:09:02.169392+00:00",
+      "updated_at": "2026-08-21T03:11:06.605131+00:00",
       "image_path": null,
       "instagram": {
         "status": "PENDING",
@@ -2439,6 +2439,6 @@
       "error": null
     }
   },
-  "last_run": "2026-08-21T03:09:06.583769+00:00",
-  "updated_at": "2026-08-21T03:09:06.583774+00:00"
+  "last_run": "2026-08-21T03:11:37.027287+00:00",
+  "updated_at": "2026-08-21T03:11:37.027292+00:00"
 }
