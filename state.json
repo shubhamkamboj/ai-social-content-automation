@@ -5,18 +5,18 @@
       "id": "ee6066fee1cc5ed4",
       "topic": "Java HashMap Internal Working",
       "category": "java",
-      "status": "GENERATED",
-      "attempts": 1,
+      "status": "PUBLISHED",
+      "attempts": 2,
       "created_at": "2026-08-21T02:41:26.933151+00:00",
-      "updated_at": "2026-08-21T02:41:28.840008+00:00",
+      "updated_at": "2026-08-21T02:42:07.254666+00:00",
       "image_path": "generated/ee6066fee1cc5ed4.png",
       "instagram": {
-        "status": "PENDING",
-        "url": null,
+        "status": "PUBLISHED",
+        "url": "https://www.instagram.com/p/DcSShImlnvk/",
         "error": null
       },
       "linkedin": {
-        "status": "PENDING",
+        "status": "DISABLED",
         "url": null,
         "error": null
       },
@@ -212,5 +212,5 @@
       "error": null
     }
   },
-  "last_run": "2026-08-21T02:41:28.840577+00:00"
+  "last_run": "2026-08-21T02:42:07.255304+00:00"
 }
