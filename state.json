@@ -1,6 +1,2443 @@
-﻿{
+{
   "version": 3,
-  "topics": {},
-  "last_run": null,
-  "updated_at": null
+  "topics": {
+    "a34b1bb46bda4c0e": {
+      "id": "a34b1bb46bda4c0e",
+      "topic": "API Gateway",
+      "category": "aws",
+      "status": "FAILED",
+      "attempts": 1,
+      "created_at": "2026-08-21T03:33:29.089672+00:00",
+      "updated_at": "2026-08-21T03:33:29.092562+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": "'key_concepts'"
+    },
+    "554e79e652b29f3a": {
+      "id": "554e79e652b29f3a",
+      "topic": "Lambda",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089703+00:00",
+      "updated_at": "2026-08-21T03:33:29.089705+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "d940b56413af5848": {
+      "id": "d940b56413af5848",
+      "topic": "ECS",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089710+00:00",
+      "updated_at": "2026-08-21T03:33:29.089711+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "6e884711fb5f5560": {
+      "id": "6e884711fb5f5560",
+      "topic": "EKS",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089716+00:00",
+      "updated_at": "2026-08-21T03:33:29.089718+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "241f9a66995c7230": {
+      "id": "241f9a66995c7230",
+      "topic": "SQS",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089743+00:00",
+      "updated_at": "2026-08-21T03:33:29.089745+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "b018ed7bff94dbb0": {
+      "id": "b018ed7bff94dbb0",
+      "topic": "SNS",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089749+00:00",
+      "updated_at": "2026-08-21T03:33:29.089751+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "b5bf0a589df56fbc": {
+      "id": "b5bf0a589df56fbc",
+      "topic": "EventBridge",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089755+00:00",
+      "updated_at": "2026-08-21T03:33:29.089757+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "07311b26942e0d3d": {
+      "id": "07311b26942e0d3d",
+      "topic": "RDS",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089766+00:00",
+      "updated_at": "2026-08-21T03:33:29.089767+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "cf99b895f350b775": {
+      "id": "cf99b895f350b775",
+      "topic": "DynamoDB",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089773+00:00",
+      "updated_at": "2026-08-21T03:33:29.089775+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "354994e0d05f871e": {
+      "id": "354994e0d05f871e",
+      "topic": "ElastiCache",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089779+00:00",
+      "updated_at": "2026-08-21T03:33:29.089781+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "38faba71b3a6cfc9": {
+      "id": "38faba71b3a6cfc9",
+      "topic": "VPC",
+      "category": "aws",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089784+00:00",
+      "updated_at": "2026-08-21T03:33:29.089785+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "3bdbbccf942669b1": {
+      "id": "3bdbbccf942669b1",
+      "topic": "JVM Startup Flow",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089790+00:00",
+      "updated_at": "2026-08-21T03:33:29.089791+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "cfaeff9aa837f6da": {
+      "id": "cfaeff9aa837f6da",
+      "topic": "Garbage Collection Visualization",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089796+00:00",
+      "updated_at": "2026-08-21T03:33:29.089797+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "1bc22ae912fde273": {
+      "id": "1bc22ae912fde273",
+      "topic": "Young Gen vs Old Gen",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089807+00:00",
+      "updated_at": "2026-08-21T03:33:29.089808+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "a139fe79bc5f8e2b": {
+      "id": "a139fe79bc5f8e2b",
+      "topic": "G1 GC Explained",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089812+00:00",
+      "updated_at": "2026-08-21T03:33:29.089814+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "31b0fb32ef5a3b87": {
+      "id": "31b0fb32ef5a3b87",
+      "topic": "ZGC vs G1",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089818+00:00",
+      "updated_at": "2026-08-21T03:33:29.089819+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "2b59a10155f4d555": {
+      "id": "2b59a10155f4d555",
+      "topic": "Escape Analysis",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089823+00:00",
+      "updated_at": "2026-08-21T03:33:29.089824+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9d707ca0735f3cec": {
+      "id": "9d707ca0735f3cec",
+      "topic": "JIT Compiler Pipeline",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089828+00:00",
+      "updated_at": "2026-08-21T03:33:29.089830+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "0feaba08a98c3bc3": {
+      "id": "0feaba08a98c3bc3",
+      "topic": "Bytecode Execution",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089833+00:00",
+      "updated_at": "2026-08-21T03:33:29.089835+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "d25517affe56c0dc": {
+      "id": "d25517affe56c0dc",
+      "topic": "Reflection API",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089839+00:00",
+      "updated_at": "2026-08-21T03:33:29.089840+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "89ffe9431e3ec54e": {
+      "id": "89ffe9431e3ec54e",
+      "topic": "Java NIO Architecture",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089844+00:00",
+      "updated_at": "2026-08-21T03:33:29.089845+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "107c29fb1af7fede": {
+      "id": "107c29fb1af7fede",
+      "topic": "Virtual Threads (Java 21)",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089849+00:00",
+      "updated_at": "2026-08-21T03:33:29.089851+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "2dfe1aea6ae0dcd3": {
+      "id": "2dfe1aea6ae0dcd3",
+      "topic": "Project Loom",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089855+00:00",
+      "updated_at": "2026-08-21T03:33:29.089856+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9e6e11ed2d58a761": {
+      "id": "9e6e11ed2d58a761",
+      "topic": "Java Records",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089860+00:00",
+      "updated_at": "2026-08-21T03:33:29.089861+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "2e81afce356c62b4": {
+      "id": "2e81afce356c62b4",
+      "topic": "Sealed Classes",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089865+00:00",
+      "updated_at": "2026-08-21T03:33:29.089866+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "127684b658e44eff": {
+      "id": "127684b658e44eff",
+      "topic": "Pattern Matching",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089872+00:00",
+      "updated_at": "2026-08-21T03:33:29.089874+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "ca20e567b480dcce": {
+      "id": "ca20e567b480dcce",
+      "topic": "Stream API Pipeline",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089878+00:00",
+      "updated_at": "2026-08-21T03:33:29.089880+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "d732139bb1f6e7b7": {
+      "id": "d732139bb1f6e7b7",
+      "topic": "Parallel Streams",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089883+00:00",
+      "updated_at": "2026-08-21T03:33:29.089885+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "64bee5763410d9d8": {
+      "id": "64bee5763410d9d8",
+      "topic": "CompletableFuture Flow",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089888+00:00",
+      "updated_at": "2026-08-21T03:33:29.089890+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "2d37efc16371d4a0": {
+      "id": "2d37efc16371d4a0",
+      "topic": "Memory Leak Visualization",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089894+00:00",
+      "updated_at": "2026-08-21T03:33:29.089895+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "5bc18c20ac7e3de2": {
+      "id": "5bc18c20ac7e3de2",
+      "topic": "Thread Dump Anatomy",
+      "category": "java",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089898+00:00",
+      "updated_at": "2026-08-21T03:33:29.089900+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "eccca0433bb7f166": {
+      "id": "eccca0433bb7f166",
+      "topic": "Spring Boot Startup",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089906+00:00",
+      "updated_at": "2026-08-21T03:33:29.089907+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "d1d0218fda026835": {
+      "id": "d1d0218fda026835",
+      "topic": "Bean Creation Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089911+00:00",
+      "updated_at": "2026-08-21T03:33:29.089912+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9f55c83a05d43c38": {
+      "id": "9f55c83a05d43c38",
+      "topic": "Dependency Injection Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089916+00:00",
+      "updated_at": "2026-08-21T03:33:29.089917+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "1784dfb485c55336": {
+      "id": "1784dfb485c55336",
+      "topic": "Auto Configuration Internals",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089923+00:00",
+      "updated_at": "2026-08-21T03:33:29.089925+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "7ae77ea0eb417ce7": {
+      "id": "7ae77ea0eb417ce7",
+      "topic": "Spring MVC Request Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089929+00:00",
+      "updated_at": "2026-08-21T03:33:29.089930+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "19ac1d7201579b1b": {
+      "id": "19ac1d7201579b1b",
+      "topic": "Spring Security Authentication Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089934+00:00",
+      "updated_at": "2026-08-21T03:33:29.089935+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "4966087b013da57f": {
+      "id": "4966087b013da57f",
+      "topic": "OAuth2 Login Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089939+00:00",
+      "updated_at": "2026-08-21T03:33:29.089940+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "0a6cd385a2cfc3f1": {
+      "id": "0a6cd385a2cfc3f1",
+      "topic": "JWT Validation Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089943+00:00",
+      "updated_at": "2026-08-21T03:33:29.089945+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "b6e2b5104266d94f": {
+      "id": "b6e2b5104266d94f",
+      "topic": "Spring Transaction Lifecycle",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089949+00:00",
+      "updated_at": "2026-08-21T03:33:29.089950+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "e470666eeb452039": {
+      "id": "e470666eeb452039",
+      "topic": "Hibernate First Level Cache",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089956+00:00",
+      "updated_at": "2026-08-21T03:33:29.089957+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "189a7b31e140c444": {
+      "id": "189a7b31e140c444",
+      "topic": "Hibernate Second Level Cache",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089963+00:00",
+      "updated_at": "2026-08-21T03:33:29.089964+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "f70cbea892ed0479": {
+      "id": "f70cbea892ed0479",
+      "topic": "Lazy Loading",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089968+00:00",
+      "updated_at": "2026-08-21T03:33:29.089969+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "351655ba73fbe860": {
+      "id": "351655ba73fbe860",
+      "topic": "Open Session in View",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089973+00:00",
+      "updated_at": "2026-08-21T03:33:29.089975+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "27c145fbcacc748a": {
+      "id": "27c145fbcacc748a",
+      "topic": "Spring Event Listener",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089978+00:00",
+      "updated_at": "2026-08-21T03:33:29.089979+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "3f0131c9c29a5980": {
+      "id": "3f0131c9c29a5980",
+      "topic": "Spring Batch Flow",
+      "category": "spring",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089985+00:00",
+      "updated_at": "2026-08-21T03:33:29.089986+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9234073e19e39f13": {
+      "id": "9234073e19e39f13",
+      "topic": "B+ Tree Index",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089990+00:00",
+      "updated_at": "2026-08-21T03:33:29.089991+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "1fc9c4a58e787a66": {
+      "id": "1fc9c4a58e787a66",
+      "topic": "Clustered vs Non Clustered Index",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.089996+00:00",
+      "updated_at": "2026-08-21T03:33:29.089997+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "fb804b0e7a03e7df": {
+      "id": "fb804b0e7a03e7df",
+      "topic": "Database Replication",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090000+00:00",
+      "updated_at": "2026-08-21T03:33:29.090002+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "5a35cd1d069460e6": {
+      "id": "5a35cd1d069460e6",
+      "topic": "Master Slave",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090005+00:00",
+      "updated_at": "2026-08-21T03:33:29.090006+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "895d73ca71781937": {
+      "id": "895d73ca71781937",
+      "topic": "Leader Follower",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090010+00:00",
+      "updated_at": "2026-08-21T03:33:29.090011+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "ff3714419a108c2b": {
+      "id": "ff3714419a108c2b",
+      "topic": "Read Replica",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090016+00:00",
+      "updated_at": "2026-08-21T03:33:29.090018+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "b548699f58b0b861": {
+      "id": "b548699f58b0b861",
+      "topic": "Database Partitioning",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090021+00:00",
+      "updated_at": "2026-08-21T03:33:29.090022+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "472976a583fda177": {
+      "id": "472976a583fda177",
+      "topic": "Horizontal vs Vertical Scaling",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090026+00:00",
+      "updated_at": "2026-08-21T03:33:29.090027+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "57de36edd6a707f3": {
+      "id": "57de36edd6a707f3",
+      "topic": "Connection Pool",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090033+00:00",
+      "updated_at": "2026-08-21T03:33:29.090034+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "ae5eebff12dd75af": {
+      "id": "ae5eebff12dd75af",
+      "topic": "ACID",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090038+00:00",
+      "updated_at": "2026-08-21T03:33:29.090040+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "157133e4275733c6": {
+      "id": "157133e4275733c6",
+      "topic": "CAP Theorem",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090046+00:00",
+      "updated_at": "2026-08-21T03:33:29.090047+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "fbc621b90173b59a": {
+      "id": "fbc621b90173b59a",
+      "topic": "BASE Architecture",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090051+00:00",
+      "updated_at": "2026-08-21T03:33:29.090052+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "44bda8cc53ea6340": {
+      "id": "44bda8cc53ea6340",
+      "topic": "Two Phase Commit",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090056+00:00",
+      "updated_at": "2026-08-21T03:33:29.090057+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "0667ad238b4a929b": {
+      "id": "0667ad238b4a929b",
+      "topic": "Optimistic Locking",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090060+00:00",
+      "updated_at": "2026-08-21T03:33:29.090062+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "009aec3d4b18a463": {
+      "id": "009aec3d4b18a463",
+      "topic": "Pessimistic Locking",
+      "category": "sql",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090065+00:00",
+      "updated_at": "2026-08-21T03:33:29.090067+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "d1dd4aa7b7859c4e": {
+      "id": "d1dd4aa7b7859c4e",
+      "topic": "Kafka Cluster",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090074+00:00",
+      "updated_at": "2026-08-21T03:33:29.090076+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "74caf7e144999357": {
+      "id": "74caf7e144999357",
+      "topic": "Broker Architecture",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090079+00:00",
+      "updated_at": "2026-08-21T03:33:29.090080+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "4a9a453c21a924cd": {
+      "id": "4a9a453c21a924cd",
+      "topic": "Topic & Partition",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090084+00:00",
+      "updated_at": "2026-08-21T03:33:29.090085+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "723b69d5484e018f": {
+      "id": "723b69d5484e018f",
+      "topic": "Consumer Group",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090089+00:00",
+      "updated_at": "2026-08-21T03:33:29.090090+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "f1d631ec876a805b": {
+      "id": "f1d631ec876a805b",
+      "topic": "Producer Flow",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090094+00:00",
+      "updated_at": "2026-08-21T03:33:29.090095+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "7360bb09683f6c2f": {
+      "id": "7360bb09683f6c2f",
+      "topic": "Offset Management",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090098+00:00",
+      "updated_at": "2026-08-21T03:33:29.090100+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "977664d09433c9e2": {
+      "id": "977664d09433c9e2",
+      "topic": "ISR",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090103+00:00",
+      "updated_at": "2026-08-21T03:33:29.090104+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "6e5ad381eec45b02": {
+      "id": "6e5ad381eec45b02",
+      "topic": "Leader Election",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090107+00:00",
+      "updated_at": "2026-08-21T03:33:29.090109+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "fd6bef7cd57b35cf": {
+      "id": "fd6bef7cd57b35cf",
+      "topic": "Exactly Once Delivery",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090112+00:00",
+      "updated_at": "2026-08-21T03:33:29.090113+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "acc54d35e82c6a6f": {
+      "id": "acc54d35e82c6a6f",
+      "topic": "Kafka Streams",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090117+00:00",
+      "updated_at": "2026-08-21T03:33:29.090118+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "c202b6d8cf87c342": {
+      "id": "c202b6d8cf87c342",
+      "topic": "Kafka Connect",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090124+00:00",
+      "updated_at": "2026-08-21T03:33:29.090125+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "b4586c2796803445": {
+      "id": "b4586c2796803445",
+      "topic": "Schema Registry",
+      "category": "kafka",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090128+00:00",
+      "updated_at": "2026-08-21T03:33:29.090130+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "99b748132624b40d": {
+      "id": "99b748132624b40d",
+      "topic": "Redis Data Structures",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090135+00:00",
+      "updated_at": "2026-08-21T03:33:29.090137+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "3bfa01c37244cf8d": {
+      "id": "3bfa01c37244cf8d",
+      "topic": "Redis Pub/Sub",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090140+00:00",
+      "updated_at": "2026-08-21T03:33:29.090141+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "f153148be1dc9fcc": {
+      "id": "f153148be1dc9fcc",
+      "topic": "Redis Streams",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090145+00:00",
+      "updated_at": "2026-08-21T03:33:29.090146+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "457b15dca16542d6": {
+      "id": "457b15dca16542d6",
+      "topic": "Cache Aside Pattern",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090152+00:00",
+      "updated_at": "2026-08-21T03:33:29.090153+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "1335bc0bbe1b2a88": {
+      "id": "1335bc0bbe1b2a88",
+      "topic": "Write Through",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090158+00:00",
+      "updated_at": "2026-08-21T03:33:29.090160+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "92b6f5f9c8605f7e": {
+      "id": "92b6f5f9c8605f7e",
+      "topic": "Write Back",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090163+00:00",
+      "updated_at": "2026-08-21T03:33:29.090164+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "dd2688310988a6c0": {
+      "id": "dd2688310988a6c0",
+      "topic": "Write Around",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090168+00:00",
+      "updated_at": "2026-08-21T03:33:29.090169+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "55fcffcc1c5689c6": {
+      "id": "55fcffcc1c5689c6",
+      "topic": "Distributed Lock",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090172+00:00",
+      "updated_at": "2026-08-21T03:33:29.090174+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "74bac307325a43a5": {
+      "id": "74bac307325a43a5",
+      "topic": "RedLock",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090179+00:00",
+      "updated_at": "2026-08-21T03:33:29.090180+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "043fece12eece7f5": {
+      "id": "043fece12eece7f5",
+      "topic": "Redis Sentinel",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090184+00:00",
+      "updated_at": "2026-08-21T03:33:29.090185+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "cb47dd8dc69a920a": {
+      "id": "cb47dd8dc69a920a",
+      "topic": "Redis Cluster",
+      "category": "redis",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090188+00:00",
+      "updated_at": "2026-08-21T03:33:29.090190+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "274445bcef4cfda4": {
+      "id": "274445bcef4cfda4",
+      "topic": "Docker Layers",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090193+00:00",
+      "updated_at": "2026-08-21T03:33:29.090194+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "08b017f214b07007": {
+      "id": "08b017f214b07007",
+      "topic": "Docker Networking",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090198+00:00",
+      "updated_at": "2026-08-21T03:33:29.090199+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "be94eac9e0f12fb7": {
+      "id": "be94eac9e0f12fb7",
+      "topic": "Docker Volumes",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090203+00:00",
+      "updated_at": "2026-08-21T03:33:29.090205+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "62aaae84ec3f727c": {
+      "id": "62aaae84ec3f727c",
+      "topic": "Kubernetes Pod",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090208+00:00",
+      "updated_at": "2026-08-21T03:33:29.090209+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "aee50b18a03c89e4": {
+      "id": "aee50b18a03c89e4",
+      "topic": "Deployment",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090213+00:00",
+      "updated_at": "2026-08-21T03:33:29.090214+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "4b4513bb6abe5914": {
+      "id": "4b4513bb6abe5914",
+      "topic": "ReplicaSet",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090217+00:00",
+      "updated_at": "2026-08-21T03:33:29.090218+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9df6b026a8c6c26e": {
+      "id": "9df6b026a8c6c26e",
+      "topic": "Service",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090222+00:00",
+      "updated_at": "2026-08-21T03:33:29.090223+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "487a0a9a39038de9": {
+      "id": "487a0a9a39038de9",
+      "topic": "Ingress",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090228+00:00",
+      "updated_at": "2026-08-21T03:33:29.090230+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "e2a3d3b8036febc7": {
+      "id": "e2a3d3b8036febc7",
+      "topic": "ConfigMap",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090235+00:00",
+      "updated_at": "2026-08-21T03:33:29.090237+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "2bb80d537b1da3e3": {
+      "id": "2bb80d537b1da3e3",
+      "topic": "Secret",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090242+00:00",
+      "updated_at": "2026-08-21T03:33:29.090243+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "31cd88e5719c6316": {
+      "id": "31cd88e5719c6316",
+      "topic": "HPA",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090246+00:00",
+      "updated_at": "2026-08-21T03:33:29.090248+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9359f3bb2efa7aab": {
+      "id": "9359f3bb2efa7aab",
+      "topic": "Namespace",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090251+00:00",
+      "updated_at": "2026-08-21T03:33:29.090252+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "1ed0fa236dbf6b8a": {
+      "id": "1ed0fa236dbf6b8a",
+      "topic": "Node vs Pod",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090256+00:00",
+      "updated_at": "2026-08-21T03:33:29.090257+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "56b366cf2627449c": {
+      "id": "56b366cf2627449c",
+      "topic": "Cluster Architecture",
+      "category": "docker",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090263+00:00",
+      "updated_at": "2026-08-21T03:33:29.090264+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "8ab91ec50df9cdf6": {
+      "id": "8ab91ec50df9cdf6",
+      "topic": "Memory Leak Investigation",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090268+00:00",
+      "updated_at": "2026-08-21T03:33:29.090269+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "3f086a379df598d8": {
+      "id": "3f086a379df598d8",
+      "topic": "Thread Dump Analysis",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090272+00:00",
+      "updated_at": "2026-08-21T03:33:29.090274+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "a8246f27c7176013": {
+      "id": "a8246f27c7176013",
+      "topic": "Heap Dump Analysis",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090277+00:00",
+      "updated_at": "2026-08-21T03:33:29.090278+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "58bc53633f60e0bf": {
+      "id": "58bc53633f60e0bf",
+      "topic": "CPU Profiling",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090284+00:00",
+      "updated_at": "2026-08-21T03:33:29.090286+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "e81a660a2a3d34a8": {
+      "id": "e81a660a2a3d34a8",
+      "topic": "GC Logs",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090289+00:00",
+      "updated_at": "2026-08-21T03:33:29.090290+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "aa5e13d8475bf07d": {
+      "id": "aa5e13d8475bf07d",
+      "topic": "High CPU Issue",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090294+00:00",
+      "updated_at": "2026-08-21T03:33:29.090295+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "c28b783844c9fb49": {
+      "id": "c28b783844c9fb49",
+      "topic": "Database Bottleneck",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090299+00:00",
+      "updated_at": "2026-08-21T03:33:29.090300+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "3a924ebb911f76a3": {
+      "id": "3a924ebb911f76a3",
+      "topic": "Redis Failure",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090303+00:00",
+      "updated_at": "2026-08-21T03:33:29.090304+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "864f5b9d48066a49": {
+      "id": "864f5b9d48066a49",
+      "topic": "Kafka Failure",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090308+00:00",
+      "updated_at": "2026-08-21T03:33:29.090309+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "489d64d112e982ad": {
+      "id": "489d64d112e982ad",
+      "topic": "API Timeout",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090313+00:00",
+      "updated_at": "2026-08-21T03:33:29.090314+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "f759d493831caa3b": {
+      "id": "f759d493831caa3b",
+      "topic": "Slow SQL Query",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090317+00:00",
+      "updated_at": "2026-08-21T03:33:29.090318+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "3a357ad1c8210c96": {
+      "id": "3a357ad1c8210c96",
+      "topic": "Circuit Breaker in Action",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090325+00:00",
+      "updated_at": "2026-08-21T03:33:29.090326+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "f5b3b53c89a38aa7": {
+      "id": "f5b3b53c89a38aa7",
+      "topic": "Retry Pattern",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090331+00:00",
+      "updated_at": "2026-08-21T03:33:29.090333+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "b8a65fcb7517908c": {
+      "id": "b8a65fcb7517908c",
+      "topic": "Bulkhead Pattern",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090338+00:00",
+      "updated_at": "2026-08-21T03:33:29.090340+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "9f14fadbd68c1440": {
+      "id": "9f14fadbd68c1440",
+      "topic": "Observability Stack",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090343+00:00",
+      "updated_at": "2026-08-21T03:33:29.090344+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "aa38c8441c3f95f1": {
+      "id": "aa38c8441c3f95f1",
+      "topic": "Prometheus + Grafana",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090348+00:00",
+      "updated_at": "2026-08-21T03:33:29.090349+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "2d75cae9ced26aac": {
+      "id": "2d75cae9ced26aac",
+      "topic": "ELK Stack",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090352+00:00",
+      "updated_at": "2026-08-21T03:33:29.090354+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    },
+    "15646ccfc4230c22": {
+      "id": "15646ccfc4230c22",
+      "topic": "OpenTelemetry",
+      "category": "production",
+      "status": "PENDING",
+      "attempts": 0,
+      "created_at": "2026-08-21T03:33:29.090357+00:00",
+      "updated_at": "2026-08-21T03:33:29.090358+00:00",
+      "image_path": null,
+      "instagram": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "linkedin": {
+        "status": "PENDING",
+        "url": null,
+        "error": null
+      },
+      "error": null
+    }
+  },
+  "last_run": "2026-08-21T03:33:29.094434+00:00",
+  "updated_at": "2026-08-21T03:33:29.094441+00:00"
 }
