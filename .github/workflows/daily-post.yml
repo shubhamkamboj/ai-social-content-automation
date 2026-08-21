@@ -16,7 +16,7 @@ jobs:
 
     env:
       DRY_RUN: "true"
-      POST_LIMIT: ${{ vars.POST_LIMIT || '1' }}
+      POST_LIMIT: ${{ vars.POST_LIMIT || '4' }}
       TOPICS_FILE: topics/topics.docx
       STATE_FILE: state.json
       OUTPUT_DIR: generated
@@ -41,12 +41,12 @@ jobs:
       - name: Generate infographic and Reel
         run: python -m src.main
 
-      - name: Commit generated Reel assets
+      - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add generated/ state.json
-          git diff --cached --quiet || git commit -m "chore: generate daily Reel content"
+          git diff --cached --quiet || git commit -m "chore: generate daily social content"
           git push
 
   publish:
@@ -57,7 +57,7 @@ jobs:
 
     env:
       DRY_RUN: "false"
-      POST_LIMIT: ${{ vars.POST_LIMIT || '1' }}
+      POST_LIMIT: ${{ vars.POST_LIMIT || '4' }}
       TOPICS_FILE: topics/topics.docx
       STATE_FILE: state.json
       OUTPUT_DIR: generated
@@ -97,13 +97,10 @@ jobs:
         shell: bash
         run: |
           set -e
-
           found=0
 
-          for file in generated/*.mp4; do
-            [ -e "$file" ] || continue
+          while IFS= read -r file; do
             found=1
-
             name="$(basename "$file")"
             url="${PUBLIC_BASE_URL}/${name}"
 
@@ -122,20 +119,127 @@ jobs:
               echo "Reel URL is not publicly reachable: $url"
               exit 1
             fi
-          done
+          done < <(find generated -maxdepth 1 -type f -name "*.mp4" | sort)
 
           if [ "$found" -ne 1 ]; then
             echo "No MP4 Reel files found in generated/."
             exit 1
           fi
 
-      - name: Publish next Reel
+      - name: Publish next Reels
         run: python -m src.main
 
-      - name: Commit Reel publish status
+      - name: Commit publish status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json
           git diff --cached --quiet || git commit -m "chore: update Reel publish status"
           git push
+
+  topic_reminder:
+    name: Low topic queue reminder
+    needs:
+      - generate
+      - publish
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+
+    env:
+      TOPICS_FILE: topics/topics.docx
+      STATE_FILE: state.json
+      POST_LIMIT: ${{ vars.POST_LIMIT || '4' }}
+      TOPICS_REMINDER_DAYS: "2"
+
+    steps:
+      - name: Checkout latest state
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Pull latest state
+        run: git pull --rebase origin "${GITHUB_REF_NAME}"
+
+      - name: Check remaining topics
+        shell: python
+        run: |
+          import json
+          import re
+          import sys
+          from pathlib import Path
+          from docx import Document
+
+          topics_file = Path("topics/topics.docx")
+          state_file = Path("state.json")
+
+          daily_posts = int(__import__("os").environ.get("POST_LIMIT", "4"))
+          reminder_days = int(__import__("os").environ.get("TOPICS_REMINDER_DAYS", "2"))
+          threshold = daily_posts * reminder_days
+
+          def normalize(value: str) -> str:
+              return " ".join((value or "").strip().split()).casefold()
+
+          # DOCX is the only source of truth.
+          doc = Document(topics_file)
+          topics = []
+
+          for paragraph in doc.paragraphs:
+              text = " ".join(paragraph.text.strip().split())
+              if not text:
+                  continue
+
+              # Ignore numbered section headings such as:
+              # 1. AWS Architecture
+              if re.match(r"^\d+\s*[\.\)]\s+", text):
+                  continue
+
+              text = re.sub(r"^[•●▪◦‣\-–—]\s*", "", text).strip()
+              if text:
+                  topics.append(text)
+
+          unique_topics = []
+          seen = set()
+          for topic in topics:
+              key = normalize(topic)
+              if key and key not in seen:
+                  seen.add(key)
+                  unique_topics.append(topic)
+
+          state = json.loads(state_file.read_text(encoding="utf-8-sig"))
+          state_topics = state.get("topics", {})
+
+          published = {
+              normalize(item.get("topic", ""))
+              for item in state_topics.values()
+              if item.get("status") == "PUBLISHED"
+          }
+
+          remaining = sum(
+              1 for topic in unique_topics
+              if normalize(topic) not in published
+          )
+
+          print(f"Total current topics : {len(unique_topics)}")
+          print(f"Published topics      : {len(unique_topics) - remaining}")
+          print(f"Remaining topics      : {remaining}")
+          print(f"Reminder threshold    : {threshold}")
+
+          if remaining <= threshold:
+              print("")
+              print("==============================================")
+              print("⚠️  TOPIC QUEUE LOW")
+              print("==============================================")
+              print(f"Only {remaining} topics remain.")
+              print(f"At {daily_posts} posts/day, content will run out in")
+              print(f"approximately {remaining / daily_posts:.1f} day(s).")
+              print("")
+              print("Please update topics/topics.docx with new topics.")
+              print("GitHub Actions is configured to email you for failed workflows.")
+              print("==============================================")
+
+              # Deliberately fail this job so GitHub's failed-workflow
+              # notification can alert the repository owner.
+              sys.exit(1)
+
+          print("Topic queue is healthy. No reminder required.")

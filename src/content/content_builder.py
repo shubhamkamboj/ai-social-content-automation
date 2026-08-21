@@ -1,241 +1,304 @@
 from __future__ import annotations
 
+from src.content.topic_parser import detect_category
+
+# Rich visual content presets. The topic itself remains the source title.
+# Unknown topics fall back to a generic but still visual infographic structure.
+
 PRESETS = {
     "kafka": {
-        "tagline": "Efficient • Scalable • Fault-Tolerant • Event-Driven",
-        "overview": "Kafka uses topics and partitions to distribute records. A consumer group allows multiple consumers to work together and share the load while Kafka tracks offsets and rebalances assignments.",
-        "key_concepts": [
-            "Partition-based parallelism",
-            "Consumer group coordination",
-            "Offset tracking",
-            "Rebalancing",
-            "Scalable & fault-tolerant processing",
+        "tagline": "PARALLEL • SCALABLE • EVENT-DRIVEN",
+        "overview_prefix": "Kafka consumer groups let multiple consumers work together to process topic partitions in parallel.",
+        "architecture": {
+            "type": "kafka_consumer_group",
+            "label": "HOW IT WORKS",
+        },
+        "key_ideas": [
+            ("PARTITIONS", "Each partition is consumed by one consumer in a group."),
+            ("GROUP", "Consumers with the same group.id share the workload."),
+            ("OFFSETS", "Kafka tracks the position of each consumer."),
+            ("REBALANCE", "Assignments change when members join or leave."),
         ],
-        "diagram_title": "HOW IT WORKS",
-        "diagram": "producer_topic_consumers",
-        "scenarios": [
-            ("New consumer joins", "Partitions are redistributed", "Short pause", "Scale out group"),
-            ("Consumer leaves", "Partitions are reassigned", "Short pause", "Instance failure"),
-            ("Rebalance triggered", "Assignments recalculated", "Temporary interruption", "Config/failure"),
-            ("Group scaling", "Load balanced across consumers", "Higher throughput", "Add consumers"),
-            ("Fault tolerance", "Consumers recover ownership", "Reliable processing", "Auto recovery"),
+        "example_title": "PARTITION ASSIGNMENT",
+        "example_rows": [
+            ("P0", "Consumer 1"),
+            ("P1", "Consumer 2"),
+            ("P2", "Consumer 3"),
         ],
+        "failure_title": "WHAT HAPPENS IF A CONSUMER FAILS?",
+        "failure_before": [("P0", "C1"), ("P1", "C2"), ("P2", "C3")],
+        "failure_after": [("P0", "C1"), ("P1", "C3"), ("P2", "C3")],
         "best_practices": [
-            "Commit offsets after successful processing",
-            "Monitor consumer lag and rebalance events",
-            "Use enough partitions for required parallelism",
-            "Keep handlers idempotent and fast",
+            "Keep consumers <= partitions for useful parallelism.",
+            "Monitor consumer lag and rebalance events.",
+            "Make processing idempotent where possible.",
+            "Commit offsets after successful processing.",
         ],
-        "use_cases": ["Real-time Analytics", "Log Aggregation", "Stream Processing", "Event Notifications", "Microservices Integration"],
-    },
-    "redis": {
-        "tagline": "Fast • In-Memory • Low-Latency • Flexible",
-        "overview": "Redis is an in-memory data platform used for caching, sessions, counters, rate limiting and fast lookups. TTL and eviction policies help control memory.",
-        "key_concepts": ["Key-value model", "Low-latency reads", "TTL & expiration", "Eviction policies", "Caching patterns"],
-        "diagram_title": "CACHE FLOW",
-        "diagram": "request_cache_db",
-        "scenarios": [
-            ("Cache hit", "Value returned from Redis", "Lowest latency", "Hot data"),
-            ("Cache miss", "Read source then set cache", "Higher latency", "Cold data"),
-            ("TTL expiry", "Entry becomes invalid", "Refresh required", "Temporary data"),
-            ("Eviction", "Old keys removed", "Memory protected", "High pressure"),
-        ],
-        "best_practices": [
-            "Choose TTLs deliberately",
-            "Prevent cache stampedes",
-            "Use namespaced keys",
-            "Monitor memory and hit ratio",
-        ],
-        "use_cases": ["API Caching", "Sessions", "Rate Limiting", "Counters", "Leaderboards"],
-    },
-    "spring": {
-        "tagline": "Production-Ready • Modular • Observable • Java",
-        "overview": "Spring Boot simplifies production Java services with dependency injection, auto-configuration, starters and operational features.",
-        "key_concepts": ["Dependency injection", "Auto-configuration", "REST APIs", "Transactions", "Actuator & observability"],
-        "diagram_title": "REQUEST FLOW",
-        "diagram": "client_controller_service_repo",
-        "scenarios": [
-            ("HTTP request", "Controller receives request", "Validation", "API call"),
-            ("Service call", "Business logic executes", "Transaction rules", "Use case"),
-            ("Repository", "Persistence is performed", "DB interaction", "CRUD"),
-            ("Actuator", "Operational metrics exposed", "Observability", "Monitoring"),
-        ],
-        "best_practices": [
-            "Keep controllers thin",
-            "Define transaction boundaries clearly",
-            "Use configuration properties",
-            "Expose only required actuator endpoints",
-        ],
-        "use_cases": ["REST APIs", "Microservices", "Batch Jobs", "Integration Services", "Enterprise Backends"],
+        "use_cases": ["Real-time Analytics", "Log Aggregation", "Stream Processing", "Event Notifications"],
     },
     "java": {
-        "tagline": "Strongly Typed • Concurrent • JVM-Based • Enterprise",
-        "overview": "Java backend systems rely on the JVM, collections, concurrency and memory management to deliver predictable application behavior at scale.",
-        "key_concepts": ["Collections", "JVM execution", "Concurrency", "Memory management", "Performance"],
-        "diagram_title": "JAVA REQUEST FLOW",
-        "diagram": "client_controller_service_repo",
-        "scenarios": [
-            ("Request", "Application receives input", "Validation", "REST call"),
-            ("Service", "Business logic executes", "CPU work", "Use case"),
-            ("JVM", "Bytecode is executed", "JIT/GC", "Runtime"),
-            ("Database", "Data is persisted", "I/O", "Repository"),
+        "tagline": "JVM • PERFORMANCE • CONCURRENCY • RUNTIME",
+        "overview_prefix": "Java internals explain how source code becomes bytecode, executes inside the JVM and interacts with memory and threads.",
+        "architecture": {
+            "type": "java_runtime",
+            "label": "RUNTIME FLOW",
+        },
+        "key_ideas": [
+            ("BYTECODE", "Java source is compiled into JVM bytecode."),
+            ("JIT", "Hot code is optimized at runtime."),
+            ("HEAP", "Objects live in managed JVM memory."),
+            ("THREADS", "Execution is coordinated by JVM threads."),
         ],
+        "example_title": "JAVA EXECUTION FLOW",
+        "example_rows": [
+            ("SOURCE", "javac"),
+            ("BYTECODE", "JVM"),
+            ("JIT", "Optimized Code"),
+        ],
+        "failure_title": "WHEN PERFORMANCE DROPS",
+        "failure_before": [("CPU", "Normal"), ("GC", "Normal"), ("Threads", "Normal")],
+        "failure_after": [("CPU", "High"), ("GC", "High"), ("Threads", "Blocked")],
         "best_practices": [
-            "Prefer clear APIs and immutable data where practical",
-            "Measure before optimizing",
-            "Control thread pools",
-            "Monitor memory and GC behavior",
+            "Profile before optimizing.",
+            "Control thread pools and queue sizes.",
+            "Watch GC and allocation pressure.",
+            "Prefer clear, measurable performance changes.",
         ],
-        "use_cases": ["Backend APIs", "Microservices", "Batch Processing", "Messaging", "Enterprise Applications"],
+        "use_cases": ["Backend APIs", "Microservices", "Batch Processing", "Messaging"],
+    },
+    "spring": {
+        "tagline": "BOOTSTRAP • BEANS • REQUESTS • SECURITY",
+        "overview_prefix": "Spring turns Java application configuration into managed beans, request pipelines and production-ready services.",
+        "architecture": {
+            "type": "spring_request",
+            "label": "REQUEST FLOW",
+        },
+        "key_ideas": [
+            ("CONTEXT", "ApplicationContext manages application components."),
+            ("BEANS", "Beans are created and wired by the container."),
+            ("REQUEST", "Spring MVC routes HTTP requests to controllers."),
+            ("SECURITY", "Filters and authentication protect endpoints."),
+        ],
+        "example_title": "SPRING REQUEST PATH",
+        "example_rows": [
+            ("CLIENT", "REQUEST"),
+            ("FILTER", "SECURITY"),
+            ("CONTROLLER", "SERVICE"),
+            ("REPO", "DATABASE"),
+        ],
+        "failure_title": "COMMON PRODUCTION HOTSPOTS",
+        "failure_before": [("DB", "Healthy"), ("POOL", "Healthy"), ("CPU", "Normal")],
+        "failure_after": [("DB", "Slow"), ("POOL", "Exhausted"), ("CPU", "High")],
+        "best_practices": [
+            "Keep controllers thin and services focused.",
+            "Define transaction boundaries deliberately.",
+            "Externalize configuration.",
+            "Expose only required actuator endpoints.",
+        ],
+        "use_cases": ["REST APIs", "Microservices", "Enterprise Services", "Batch Jobs"],
     },
     "aws": {
-        "tagline": "Scalable • Secure • Managed • Global",
-        "overview": "AWS provides managed building blocks for application hosting, storage, networking, databases, identity and observability.",
-        "key_concepts": ["Managed services", "Elastic scaling", "IAM & security", "Networking", "Cost & observability"],
-        "diagram_title": "CLOUD FLOW",
-        "diagram": "user_cloud_service_db",
-        "scenarios": [
-            ("Traffic spike", "Compute scales out", "More capacity", "Auto scaling"),
-            ("Object upload", "Storage receives object", "Durable persistence", "S3"),
-            ("API request", "Request crosses network", "Policy + routing", "VPC"),
-            ("Failure", "Traffic moves to healthy path", "High availability", "Multi-AZ"),
+        "tagline": "SCALABLE • MANAGED • SECURE • GLOBAL",
+        "overview_prefix": "AWS architecture combines managed services, networking, compute, storage and observability into scalable application paths.",
+        "architecture": {
+            "type": "aws_flow",
+            "label": "CLOUD FLOW",
+        },
+        "key_ideas": [
+            ("EDGE", "Requests can enter through managed routing services."),
+            ("COMPUTE", "Lambda, ECS or EKS can run workloads."),
+            ("DATA", "RDS, DynamoDB or S3 handle persistence."),
+            ("IAM", "Policies control access to resources."),
         ],
+        "example_title": "REQUEST PATH",
+        "example_rows": [
+            ("CLIENT", "ROUTE"),
+            ("API", "COMPUTE"),
+            ("DATA", "STORAGE"),
+        ],
+        "failure_title": "DESIGNING FOR FAILURE",
+        "failure_before": [("AZ-1", "Healthy"), ("AZ-2", "Healthy"), ("DB", "Healthy")],
+        "failure_after": [("AZ-1", "Down"), ("AZ-2", "Serving"), ("DB", "Failover")],
         "best_practices": [
-            "Apply least privilege IAM",
-            "Use multiple availability zones where needed",
-            "Tag resources for cost visibility",
-            "Monitor health and spend",
+            "Use least-privilege IAM.",
+            "Design for multiple availability zones where needed.",
+            "Monitor cost and service health.",
+            "Keep resource configuration reproducible.",
         ],
-        "use_cases": ["Web Applications", "Data Platforms", "Serverless", "Microservices", "Global Delivery"],
+        "use_cases": ["Web Applications", "Serverless", "Microservices", "Data Platforms"],
     },
-    "mongodb": {
-        "tagline": "Document-Oriented • Flexible • Indexed • Scalable",
-        "overview": "MongoDB stores document-oriented data and supports flexible schemas, indexes and aggregation pipelines for application workloads.",
-        "key_concepts": ["Document model", "Indexes", "Aggregation", "Flexible schema", "Horizontal scaling"],
-        "diagram_title": "DOCUMENT FLOW",
-        "diagram": "api_document_index",
-        "scenarios": [
-            ("Insert", "Document written", "Fast write", "New entity"),
-            ("Find", "Index locates matching documents", "Low read latency", "Lookup"),
-            ("Aggregate", "Pipeline transforms data", "CPU work", "Reporting"),
-            ("Scale", "Data distributed", "More capacity", "Sharding"),
+    "redis": {
+        "tagline": "FAST • IN-MEMORY • LOW-LATENCY • FLEXIBLE",
+        "overview_prefix": "Redis keeps hot data in memory so applications can serve frequently requested information with very low latency.",
+        "architecture": {
+            "type": "redis_cache",
+            "label": "CACHE FLOW",
+        },
+        "key_ideas": [
+            ("CACHE HIT", "Return hot data directly from Redis."),
+            ("MISS", "Read the source and repopulate the cache."),
+            ("TTL", "Expire temporary entries automatically."),
+            ("EVICTION", "Remove old entries when memory is constrained."),
         ],
+        "example_title": "CACHE-ASIDE",
+        "example_rows": [
+            ("REQUEST", "LOOKUP"),
+            ("REDIS", "HIT / MISS"),
+            ("DB", "FALLBACK"),
+        ],
+        "failure_title": "WHEN CACHE IS UNAVAILABLE",
+        "failure_before": [("API", "Fast"), ("REDIS", "Healthy"), ("DB", "Normal")],
+        "failure_after": [("API", "Slower"), ("REDIS", "Down"), ("DB", "Hot")],
         "best_practices": [
-            "Design indexes from query patterns",
-            "Avoid unbounded document growth",
-            "Measure aggregation performance",
-            "Use schema rules where useful",
+            "Choose TTLs deliberately.",
+            "Prevent cache stampedes.",
+            "Use consistent key naming.",
+            "Monitor memory and hit ratio.",
         ],
-        "use_cases": ["Product Catalogs", "Content", "Event Data", "Profiles", "Real-Time Applications"],
-    },
-    "docker": {
-        "tagline": "Portable • Repeatable • Isolated • DevOps",
-        "overview": "Docker packages applications and dependencies into containers, making environments more repeatable across development, testing and deployment.",
-        "key_concepts": ["Images", "Containers", "Networks", "Volumes", "Repeatable deployments"],
-        "diagram_title": "CONTAINER FLOW",
-        "diagram": "code_image_container",
-        "scenarios": [
-            ("Build", "Dockerfile creates image", "Repeatability", "CI pipeline"),
-            ("Run", "Image becomes container", "Isolation", "App runtime"),
-            ("Network", "Container communicates", "Connectivity", "Service call"),
-            ("Volume", "Persistent data mounted", "State retention", "Database"),
-        ],
-        "best_practices": [
-            "Use small, deterministic images",
-            "Pin important versions",
-            "Do not bake secrets into images",
-            "Keep containers focused",
-        ],
-        "use_cases": ["Local Development", "CI/CD", "Microservices", "Testing", "Cloud Deployment"],
-    },
-    "microservices": {
-        "tagline": "Independent • Resilient • Observable • Scalable",
-        "overview": "Microservices split a large application into independently deployable services with explicit boundaries, communication contracts and operational ownership.",
-        "key_concepts": ["Service boundaries", "API communication", "Resilience", "Observability", "Independent deployment"],
-        "diagram_title": "SERVICE FLOW",
-        "diagram": "gateway_services",
-        "scenarios": [
-            ("Request", "Gateway routes traffic", "Routing", "API call"),
-            ("Service call", "Service processes request", "Latency", "Business flow"),
-            ("Failure", "Circuit breaker isolates fault", "Graceful degradation", "Dependency down"),
-            ("Deploy", "One service changes", "Reduced blast radius", "Independent release"),
-        ],
-        "best_practices": [
-            "Design boundaries around business capabilities",
-            "Use timeouts and resilience patterns",
-            "Centralize observability",
-            "Keep contracts explicit",
-        ],
-        "use_cases": ["E-Commerce", "Payments", "Enterprise Platforms", "Event-Driven Systems", "Large Backends"],
+        "use_cases": ["API Caching", "Sessions", "Rate Limiting", "Counters"],
     },
     "sql": {
-        "tagline": "Relational • Consistent • Queryable • Transactional",
-        "overview": "SQL databases organize data into tables and relationships. Query design, indexes and transaction behavior directly affect correctness and performance.",
-        "key_concepts": ["Tables & relations", "Indexes", "Joins", "Transactions", "Query performance"],
-        "diagram_title": "QUERY FLOW",
-        "diagram": "api_sql_query_db",
-        "scenarios": [
-            ("Query", "SQL statement parsed", "Planning", "SELECT"),
-            ("Index", "Matching rows located", "Fast lookup", "B-Tree"),
-            ("Transaction", "Changes committed atomically", "Consistency", "UPDATE"),
-            ("Join", "Tables combined", "CPU/I/O", "Relational query"),
+        "tagline": "RELATIONAL • CONSISTENT • QUERYABLE • TRANSACTIONAL",
+        "overview_prefix": "SQL databases combine tables, indexes and transactions to provide predictable relational data access.",
+        "architecture": {
+            "type": "sql_query",
+            "label": "QUERY FLOW",
+        },
+        "key_ideas": [
+            ("INDEX", "Indexes reduce the work needed to locate rows."),
+            ("JOIN", "Queries combine data across related tables."),
+            ("TXN", "Transactions protect consistency."),
+            ("PLAN", "The optimizer selects an execution strategy."),
         ],
+        "example_title": "DATABASE ACCESS",
+        "example_rows": [
+            ("QUERY", "PARSE"),
+            ("INDEX", "LOOKUP"),
+            ("TABLE", "ROWS"),
+        ],
+        "failure_title": "SLOW QUERY SIGNALS",
+        "failure_before": [("CPU", "Normal"), ("IO", "Normal"), ("LOCK", "Low")],
+        "failure_after": [("CPU", "High"), ("IO", "High"), ("LOCK", "High")],
         "best_practices": [
-            "Index real query patterns",
-            "Keep transactions focused",
-            "Inspect execution plans",
-            "Select only required columns",
+            "Index from real query patterns.",
+            "Inspect execution plans.",
+            "Keep transactions focused.",
+            "Select only required columns.",
         ],
-        "use_cases": ["Order Systems", "Payments", "Reporting", "ERP", "Transactional Backends"],
+        "use_cases": ["Payments", "Order Systems", "ERP", "Reporting"],
     },
-    "security": {
-        "tagline": "Identity • Least Privilege • Secure by Design",
-        "overview": "Modern application security combines identity, authentication, authorization and secure token handling across clients and services.",
-        "key_concepts": ["Authentication", "Authorization", "Tokens", "Least privilege", "Secure APIs"],
-        "diagram_title": "AUTH FLOW",
-        "diagram": "client_auth_api",
-        "scenarios": [
-            ("Login", "Identity is verified", "Authentication", "Credentials"),
-            ("Token", "Access token issued", "Session", "JWT/OAuth"),
-            ("API call", "Token is validated", "Authorization", "Protected API"),
-            ("Failure", "Request is rejected", "Security", "401/403"),
+    "docker": {
+        "tagline": "PORTABLE • REPEATABLE • ISOLATED • DEVOPS",
+        "overview_prefix": "Docker packages an application with its dependencies so development and deployment environments stay consistent.",
+        "architecture": {
+            "type": "docker_container",
+            "label": "CONTAINER FLOW",
+        },
+        "key_ideas": [
+            ("IMAGE", "A reproducible package of application layers."),
+            ("CONTAINER", "A running isolated instance of an image."),
+            ("NETWORK", "Containers communicate through virtual networks."),
+            ("VOLUME", "Persistent data lives outside the container layer."),
         ],
+        "example_title": "BUILD → RUN",
+        "example_rows": [
+            ("CODE", "DOCKERFILE"),
+            ("IMAGE", "CONTAINER"),
+            ("APP", "PORT"),
+        ],
+        "failure_title": "COMMON CONTAINER ISSUES",
+        "failure_before": [("IMAGE", "OK"), ("PORT", "OK"), ("VOLUME", "OK")],
+        "failure_after": [("IMAGE", "OLD"), ("PORT", "MISMATCH"), ("VOLUME", "MISSING")],
         "best_practices": [
-            "Never store plaintext passwords",
-            "Use short-lived access tokens where appropriate",
-            "Apply least privilege",
-            "Validate token audience and issuer",
+            "Keep images small and deterministic.",
+            "Do not bake secrets into images.",
+            "Pin important versions.",
+            "Keep container responsibilities focused.",
         ],
-        "use_cases": ["Web Apps", "Mobile Apps", "APIs", "Microservices", "Enterprise Identity"],
+        "use_cases": ["Local Development", "CI/CD", "Testing", "Microservices"],
+    },
+    "production": {
+        "tagline": "DIAGNOSE • MEASURE • RECOVER • PREVENT",
+        "overview_prefix": "Production engineering turns runtime signals into a repeatable process for finding and fixing performance and reliability problems.",
+        "architecture": {
+            "type": "observability",
+            "label": "INVESTIGATION FLOW",
+        },
+        "key_ideas": [
+            ("SIGNAL", "Start with metrics, logs and traces."),
+            ("SCOPE", "Reduce the issue to one component or path."),
+            ("CAUSE", "Validate the likely bottleneck with evidence."),
+            ("FIX", "Apply and measure the change."),
+        ],
+        "example_title": "INCIDENT LOOP",
+        "example_rows": [
+            ("ALERT", "DETECT"),
+            ("TRACE", "ISOLATE"),
+            ("FIX", "VERIFY"),
+        ],
+        "failure_title": "FROM SYMPTOM TO ROOT CAUSE",
+        "failure_before": [("CPU", "High"), ("LATENCY", "High"), ("ERRORS", "Low")],
+        "failure_after": [("CPU", "Normal"), ("LATENCY", "Normal"), ("ERRORS", "Normal")],
+        "best_practices": [
+            "Keep dashboards focused on user impact.",
+            "Use traces to connect service dependencies.",
+            "Capture repeatable incident evidence.",
+            "Measure recovery after every change.",
+        ],
+        "use_cases": ["Performance Debugging", "Incident Response", "Observability", "Capacity Planning"],
     },
 }
 
 GENERIC = {
-    "tagline": "Practical • Visual • Production-Focused • Scalable",
-    "overview": "A practical visual breakdown covering the purpose, architecture, important concepts and production considerations for this technology.",
-    "key_concepts": ["Core concept", "Architecture", "Main components", "Common use case", "Production consideration"],
-    "diagram_title": "HOW IT WORKS",
-    "diagram": "generic_flow",
-    "scenarios": [
-        ("Input", "System receives request", "Validation", "Client"),
-        ("Process", "Core component handles flow", "Execution", "Service"),
-        ("Storage", "Data is persisted", "Durability", "Database"),
-        ("Scale", "Additional capacity is added", "Throughput", "Production"),
+    "tagline": "PRACTICAL • VISUAL • PRODUCTION-FOCUSED • SCALABLE",
+    "overview_prefix": "A visual explanation of the concept, its architecture, common behavior and production considerations.",
+    "architecture": {"type": "generic", "label": "HOW IT WORKS"},
+    "key_ideas": [
+        ("CORE", "Understand the main concept."),
+        ("FLOW", "Follow the request or data path."),
+        ("TRADE-OFF", "Know the important design choice."),
+        ("OPS", "Connect the concept to production."),
     ],
-    "best_practices": ["Define clear boundaries", "Monitor important metrics", "Handle failures explicitly", "Keep configuration secure"],
-    "use_cases": ["Backend Systems", "APIs", "Microservices", "Data Processing", "Enterprise Applications"],
+    "example_title": "CONCEPT FLOW",
+    "example_rows": [("INPUT", "PROCESS"), ("PROCESS", "OUTPUT")],
+    "failure_title": "WHAT CAN GO WRONG?",
+    "failure_before": [("INPUT", "OK"), ("PROCESS", "OK"), ("OUTPUT", "OK")],
+    "failure_after": [("INPUT", "OK"), ("PROCESS", "DEGRADED"), ("OUTPUT", "SLOW")],
+    "best_practices": [
+        "Keep responsibilities explicit.",
+        "Monitor important metrics.",
+        "Handle failures deliberately.",
+        "Protect configuration and credentials.",
+    ],
+    "use_cases": ["Backend Systems", "APIs", "Microservices", "Data Processing"],
 }
 
 
 def build_content(item: dict) -> dict:
-    category = item.get("category") or "generic"
-    base = dict(PRESETS.get(category, GENERIC))
+    topic = item["topic"]
+    category = item.get("category") or detect_category(topic)
 
-    for key in ["overview", "key_concepts", "scenarios", "best_practices", "use_cases", "diagram"]:
-        value = item.get(key)
-        if value:
-            base[key] = value
+    base = PRESETS.get(category, GENERIC).copy()
 
-    base["title"] = item["topic"]
-    base["category"] = category
-    return base
+    # Preserve richer Word-table fields if present.
+    if item.get("overview"):
+        base["overview_prefix"] = item["overview"]
+
+    if item.get("key_concepts"):
+        base["key_ideas"] = [
+            (str(value).upper()[:24], value)
+            for value in item["key_concepts"][:4]
+        ]
+
+    if item.get("best_practices"):
+        base["best_practices"] = item["best_practices"][:4]
+
+    if item.get("use_cases"):
+        base["use_cases"] = item["use_cases"][:4]
+
+    return {
+        **base,
+        "title": topic,
+        "category": category,
+        "overview": base["overview_prefix"],
+    }
