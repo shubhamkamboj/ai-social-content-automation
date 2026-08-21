@@ -26,18 +26,18 @@
       "id": "a2f6ea650322f032",
       "topic": "Spring Boot @Transactional",
       "category": "spring",
-      "status": "GENERATED",
-      "attempts": 1,
+      "status": "PUBLISHED",
+      "attempts": 2,
       "created_at": "2026-08-21T02:41:26.933173+00:00",
-      "updated_at": "2026-08-21T02:46:31.653685+00:00",
+      "updated_at": "2026-08-21T02:47:04.245298+00:00",
       "image_path": "generated/a2f6ea650322f032.png",
       "instagram": {
-        "status": "PENDING",
-        "url": null,
+        "status": "PUBLISHED",
+        "url": "https://www.instagram.com/p/DcSTFd7Efi3/",
         "error": null
       },
       "linkedin": {
-        "status": "PENDING",
+        "status": "DISABLED",
         "url": null,
         "error": null
       },
@@ -212,5 +212,5 @@
       "error": null
     }
   },
-  "last_run": "2026-08-21T02:46:31.654243+00:00"
+  "last_run": "2026-08-21T02:47:04.245955+00:00"
 }
