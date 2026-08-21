@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   generate:
-    name: Generate content
+    name: Generate infographic + Reel
     runs-on: ubuntu-latest
 
     env:
@@ -30,26 +30,27 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate images and captions
+      - name: Generate infographic and Reel
         run: python -m src.main
 
-      - name: Commit generated assets
+      - name: Commit generated Reel assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add generated/ state.json
-          if git diff --cached --quiet; then
-            echo "No generated changes to commit."
-          else
-            git commit -m "chore: generate daily social content"
-            git push
-          fi
+          git diff --cached --quiet || git commit -m "chore: generate daily Reel content"
+          git push
 
   publish:
-    name: Publish content
+    name: Publish Instagram Reels
     needs: generate
     if: ${{ vars.DRY_RUN != 'true' && vars.INSTAGRAM_ENABLED == 'true' }}
     runs-on: ubuntu-latest
@@ -63,93 +64,78 @@ jobs:
 
       INSTAGRAM_ENABLED: ${{ vars.INSTAGRAM_ENABLED || 'false' }}
       INSTAGRAM_GRAPH_BASE_URL: ${{ vars.INSTAGRAM_GRAPH_BASE_URL || 'https://graph.instagram.com' }}
+      INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION || 'v25.0' }}
       INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
       INSTAGRAM_ACCOUNT_ID: ${{ vars.INSTAGRAM_ACCOUNT_ID }}
 
-      # Images committed in this job become reachable from this raw URL.
       PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/generated
 
-      # Keep version configurable. Current default can be changed without code edits.
-      INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION || 'v25.0' }}
-
     steps:
-      - name: Checkout latest generated content
+      - name: Checkout latest generated assets
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
 
-      - name: Pull latest state and images
-        run: |
-          git pull --rebase origin "${GITHUB_REF_NAME}"
+      - name: Pull latest generated assets
+        run: git pull --rebase origin "${GITHUB_REF_NAME}"
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Wait for raw GitHub images
+      - name: Verify public Reel files
         shell: bash
         run: |
           set -e
-          LIMIT="${POST_LIMIT:-1}"
-          for file in generated/*.png; do
+
+          found=0
+
+          for file in generated/*.mp4; do
             [ -e "$file" ] || continue
-            NAME="$(basename "$file")"
-            URL="${PUBLIC_BASE_URL}/${NAME}"
-            echo "Checking $URL"
-            for i in {1..12}; do
-              if curl -fsIL "$URL" >/dev/null 2>&1; then
-                echo "Available: $URL"
+            found=1
+
+            name="$(basename "$file")"
+            url="${PUBLIC_BASE_URL}/${name}"
+
+            echo "Checking Reel URL: $url"
+
+            success=0
+            for i in {1..20}; do
+              if curl -fsIL "$url" >/dev/null 2>&1; then
+                success=1
                 break
-              fi
-              if [ "$i" -eq 12 ]; then
-                echo "Image not publicly reachable: $URL"
-                exit 1
               fi
               sleep 5
             done
+
+            if [ "$success" -ne 1 ]; then
+              echo "Reel URL is not publicly reachable: $url"
+              exit 1
+            fi
           done
 
-      - name: Publish next topics
+          if [ "$found" -ne 1 ]; then
+            echo "No MP4 Reel files found in generated/."
+            exit 1
+          fi
+
+      - name: Publish next Reel
         run: python -m src.main
 
-      - name: Fail job when a topic failed
-        shell: python
-        run: |
-          import json
-          from pathlib import Path
-
-          data = json.loads(Path("state.json").read_text(encoding="utf-8"))
-          limit = int(__import__("os").environ.get("POST_LIMIT", "1"))
-
-          candidates = [
-              x for x in data.get("topics", {}).values()
-              if x.get("status") in {"PUBLISHED", "FAILED"}
-          ]
-
-          failed = [
-              x for x in candidates
-              if x.get("status") == "FAILED"
-              and x.get("updated_at")
-          ]
-
-          if failed:
-              for item in failed[-limit:]:
-                  print(f"FAILED: {item.get('topic')} -> {item.get('error')}")
-              raise SystemExit(1)
-
-      - name: Commit publish status
+      - name: Commit Reel publish status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json
-          if git diff --cached --quiet; then
-            echo "No state changes to commit."
-          else
-            git commit -m "chore: update publish status"
-            git push
-          fi
+          git diff --cached --quiet || git commit -m "chore: update Reel publish status"
+          git push

@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import json
+import os
 from pathlib import Path
-import sys
-import time
+
 import requests
 
 from src.config import Config
@@ -11,22 +12,44 @@ from src.content.caption_generator import generate_captions
 from src.content.content_builder import build_content
 from src.content.topic_parser import read_topics
 from src.infographic.generator import create_infographic
+from src.infographic.reel_generator import generate_reel
 from src.platforms.instagram import InstagramPublisher
-from src.platforms.linkedin import LinkedInPublisher
 from src.state_manager import StateManager
 
 
-def wait_for_public_url(url: str, retries: int = 10) -> bool:
+def wait_for_public_url(url: str, retries: int = 18) -> bool:
     if not url:
         return False
+
     for _ in range(retries):
         try:
-            r = requests.get(url, timeout=20, stream=True)
-            if r.ok:
+            response = requests.head(
+                url,
+                allow_redirects=True,
+                timeout=20,
+            )
+
+            if response.ok:
                 return True
+
+            # Some static hosts reject HEAD, so fall back to a tiny GET.
+            response = requests.get(
+                url,
+                headers={"Range": "bytes=0-1023"},
+                stream=True,
+                timeout=20,
+            )
+
+            if response.ok:
+                response.close()
+                return True
+
         except requests.RequestException:
             pass
-        time.sleep(4)
+
+        import time
+        time.sleep(5)
+
     return False
 
 
@@ -37,32 +60,43 @@ def parse_args():
     return parser.parse_args()
 
 
-def main():
+def main() -> None:
     args = parse_args()
     config = Config()
+
     dry_run = args.dry_run or config.dry_run
     limit = args.limit or config.post_limit
 
     topics = read_topics(config.topics_file)
+
+    if not topics:
+        raise RuntimeError(
+            f"No topics found in {config.topics_file}"
+        )
+
     state = StateManager(config.state_file)
+
+    # Word document is the single source of truth.
     state.sync(topics)
+
     selected = state.next(limit)
 
-    print(f"Topics: {len(topics)} | Selected: {len(selected)} | Dry run: {dry_run}")
+    print(
+        f"Topics in DOCX: {len(topics)} | "
+        f"Selected: {len(selected)} | "
+        f"Dry run: {dry_run}"
+    )
 
-    ig = InstagramPublisher(
+    instagram = InstagramPublisher(
         config.instagram_access_token,
         config.instagram_account_id,
         config.instagram_graph_base_url,
-    )
-    li = LinkedInPublisher(
-        config.linkedin_access_token,
-        config.linkedin_author_urn,
-        config.linkedin_version,
+        getattr(config, "instagram_api_version", "v25.0"),
     )
 
     for item in selected:
         tid = item["id"]
+
         try:
             state.mark(tid, "PROCESSING")
             state.save()
@@ -70,68 +104,97 @@ def main():
             content = build_content(item)
             captions = generate_captions(content)
 
+            # 1. Generate infographic as an intermediate local asset.
             image_path = Path(config.output_dir) / f"{tid}.png"
             create_infographic(item, str(image_path))
 
-            state.mark(tid, "GENERATED", image_path=str(image_path), error=None)
+            # 2. Convert infographic into an actual MP4 Reel.
+            video_path = Path(config.output_dir) / f"{tid}.mp4"
+            generate_reel(
+                str(image_path),
+                str(video_path),
+                duration=8,
+            )
+
+            state.mark(
+                tid,
+                "GENERATED",
+                image_path=str(image_path),
+                video_path=str(video_path),
+                error=None,
+            )
             state.save()
 
-            print(f"[GENERATED] {item['topic']} -> {image_path}")
+            print(f"[GENERATED] {item['topic']}")
+            print(f"  Image: {image_path}")
+            print(f"  Reel : {video_path}")
 
             if dry_run:
-                print(f"[DRY RUN] Instagram caption: {captions['instagram'][:120]}...")
-                print(f"[DRY RUN] LinkedIn caption: {captions['linkedin'][:120]}...")
+                print("[DRY RUN] No Instagram post will be created.")
                 continue
 
+            if not config.instagram_enabled:
+                raise RuntimeError(
+                    "INSTAGRAM_ENABLED is false."
+                )
+
             if not config.public_base_url:
-                raise RuntimeError("PUBLIC_BASE_URL is required for publishing.")
+                raise RuntimeError(
+                    "PUBLIC_BASE_URL is required for Reel publishing."
+                )
 
-            image_url = f"{config.public_base_url.rstrip('/')}/{image_path.name}"
+            # Only the MP4 is published. PNG is never sent to Instagram.
+            video_url = (
+                f"{config.public_base_url.rstrip('/')}/{video_path.name}"
+            )
 
-            if not wait_for_public_url(image_url):
-                raise RuntimeError(f"Public image URL is not reachable yet: {image_url}")
+            print(f"[PUBLIC VIDEO] {video_url}")
 
-            # Instagram
-            if config.instagram_enabled:
-                if state.data["topics"][tid]["instagram"]["status"] != "PUBLISHED":
-                    result = ig.publish(str(image_path), image_url, captions["instagram"])
-                    if result.success:
-                        state.mark_platform(tid, "instagram", "PUBLISHED", result.url)
-                    else:
-                        state.mark_platform(tid, "instagram", "FAILED", None, result.message)
-                        state.mark(tid, "FAILED", error=result.message)
-                        state.save()
-                        continue
-            else:
-                state.mark_platform(tid, "instagram", "DISABLED")
+            if not wait_for_public_url(video_url):
+                raise RuntimeError(
+                    f"Public Reel video URL is not reachable: {video_url}"
+                )
 
-            # LinkedIn
-            if config.linkedin_enabled:
-                if state.data["topics"][tid]["linkedin"]["status"] != "PUBLISHED":
-                    result = li.publish(str(image_path), image_url, captions["linkedin"])
-                    if result.success:
-                        state.mark_platform(tid, "linkedin", "PUBLISHED", result.url)
-                    else:
-                        state.mark_platform(tid, "linkedin", "FAILED", None, result.message)
-                        state.mark(tid, "FAILED", error=result.message)
-                        state.save()
-                        continue
-            else:
-                state.mark_platform(tid, "linkedin", "DISABLED")
+            result = instagram.publish_reel(
+                video_url,
+                captions["instagram"],
+            )
 
-            ig_done = state.data["topics"][tid]["instagram"]["status"] in {"PUBLISHED", "DISABLED"}
-            li_done = state.data["topics"][tid]["linkedin"]["status"] in {"PUBLISHED", "DISABLED"}
+            if not result.success:
+                raise RuntimeError(result.message)
 
-            if ig_done and li_done:
-                state.mark(tid, "PUBLISHED", error=None)
-                print(f"[PUBLISHED] {item['topic']}")
-            else:
-                state.mark(tid, "FAILED", error="One or more platforms are not complete.")
+            state.mark_platform(
+                tid,
+                "instagram",
+                "PUBLISHED",
+                result.url,
+                None,
+            )
 
+            # LinkedIn remains independent for now.
+            state.mark_platform(
+                tid,
+                "linkedin",
+                "DISABLED",
+                None,
+                None,
+            )
+
+            state.mark(
+                tid,
+                "PUBLISHED",
+                error=None,
+            )
             state.save()
 
+            print(f"[PUBLISHED REEL] {item['topic']} -> {result.url}")
+
         except Exception as exc:
-            state.mark(tid, "FAILED", error=str(exc))
+            state.mark(
+                tid,
+                "FAILED",
+                error=str(exc),
+            )
             state.save()
             print(f"[FAILED] {item['topic']}: {exc}")
 
