@@ -21,6 +21,10 @@ jobs:
       STATE_FILE: state.json
       OUTPUT_DIR: generated
 
+      GEMINI_ENABLED: ${{ vars.GEMINI_ENABLED || 'true' }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,6 +73,10 @@ jobs:
       INSTAGRAM_ACCOUNT_ID: ${{ vars.INSTAGRAM_ACCOUNT_ID }}
 
       PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/generated
+
+      GEMINI_ENABLED: ${{ vars.GEMINI_ENABLED || 'true' }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
     steps:
       - name: Checkout latest generated assets
