@@ -4,759 +4,213 @@ from math import atan2, cos, sin, pi
 
 from PIL import Image, ImageDraw, ImageFilter
 
-
 W, H = 1080, 1800
 
 BG = (255, 255, 255)
 PANEL = (248, 249, 252)
-PANEL_ALT = (244, 246, 250)
-TEXT = (25, 28, 38)
+PANEL_ALT = (242, 245, 250)
+TEXT = (28, 31, 42)
 WHITE = TEXT
-MUTED = (93, 99, 116)
-LINE = (178, 184, 198)
-DARK_LINE = (214, 218, 226)
+MUTED = (92, 99, 118)
+BORDER = (184, 190, 204)
+BLUE = (58, 141, 255)
+PURPLE = (132, 84, 240)
+GREEN = (52, 194, 141)
+ORANGE = (245, 145, 49)
+CYAN = (48, 185, 210)
 
 
 def font(size: int, bold: bool = False):
+    from PIL import ImageFont
     paths = [
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-        if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"
-        if bold else "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
         "C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf",
     ]
     for path in paths:
         try:
-            from PIL import ImageFont
             return ImageFont.truetype(path, size=size)
         except OSError:
-            continue
-
-    from PIL import ImageFont
+            pass
     return ImageFont.load_default()
 
 
-def fit_font(draw, text: str, max_width: int, start_size: int, min_size: int = 22, bold: bool = False):
+def fit_font(text: str, max_width: int, start_size: int, min_size: int = 12, bold: bool = False):
+    from PIL import ImageFont
+    # No draw dependency; size based on approximate text width and exact PIL measurement.
     size = start_size
     while size > min_size:
-        fnt = font(size, bold)
-        bbox = draw.textbbox((0, 0), text, font=fnt)
+        f = font(size, bold)
+        bbox = f.getbbox(str(text))
         if bbox[2] - bbox[0] <= max_width:
-            return fnt
-        size -= 2
+            return f
+        size -= 1
     return font(min_size, bold)
 
 
-def rounded(draw, box, radius=24, fill=PANEL, outline=LINE, width=2):
+def text_width(draw, text, fnt):
+    b = draw.textbbox((0, 0), str(text), font=fnt)
+    return b[2] - b[0]
+
+
+def rounded(draw, box, radius=24, fill=PANEL, outline=BORDER, width=2):
     draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
 
 
-def draw_text(
-    draw,
-    xy,
-    text,
-    fnt,
-    fill=TEXT,
-    max_width=400,
-    line_gap=5,
-    max_lines=None,
-):
+def text_block(draw, xy, text, fnt, fill=TEXT, width=400, gap=4, max_lines=4):
     x, y = xy
-    words = text.split()
-    lines = []
-    line = ""
-
+    words = str(text).split()
+    lines, cur = [], ""
     for word in words:
-        candidate = f"{line} {word}".strip()
-        bbox = draw.textbbox((0, 0), candidate, font=fnt)
-        if bbox[2] - bbox[0] <= max_width:
-            line = candidate
+        trial = f"{cur} {word}".strip()
+        if not cur or text_width(draw, trial, fnt) <= width:
+            cur = trial
         else:
-            if line:
-                lines.append(line)
-            line = word
-
-    if line:
-        lines.append(line)
-
-    if max_lines:
-        lines = lines[:max_lines]
-
-    for current in lines:
-        draw.text((x, y), current, font=fnt, fill=fill)
-        y += fnt.size + line_gap
-
+            if cur:
+                lines.append(cur)
+            cur = word
+    if cur:
+        lines.append(cur)
+    lines = lines[:max_lines]
+    for line in lines:
+        draw.text((x, y), line, font=fnt, fill=fill)
+        y += fnt.size + gap
     return y
-
-
-def draw_centered(draw, box, text, fnt, fill=TEXT):
-    x1, y1, x2, y2 = box
-    bbox = draw.textbbox((0, 0), text, font=fnt)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
-    draw.text(
-        ((x1 + x2 - tw) / 2, (y1 + y2 - th) / 2 - bbox[1]),
-        text,
-        font=fnt,
-        fill=fill,
-    )
 
 
 def draw_arrow(draw, start, end, color, width=4):
     draw.line([start, end], fill=color, width=width)
     angle = atan2(end[1] - start[1], end[0] - start[0])
-    size = 12
-    points = [
+    size = 11
+    pts = [
         end,
-        (
-            end[0] - size * cos(angle - pi / 6),
-            end[1] - size * sin(angle - pi / 6),
-        ),
-        (
-            end[0] - size * cos(angle + pi / 6),
-            end[1] - size * sin(angle + pi / 6),
-        ),
+        (end[0] - size*cos(angle-pi/6), end[1] - size*sin(angle-pi/6)),
+        (end[0] - size*cos(angle+pi/6), end[1] - size*sin(angle+pi/6)),
     ]
-    draw.polygon(points, fill=color)
+    draw.polygon(pts, fill=color)
 
 
-def draw_node(draw, box, label, color, sub=None):
-    rounded(
-        draw,
-        box,
-        radius=14,
-        fill=(255, 255, 255),
-        outline=color,
-        width=2,
-    )
+def draw_chip(draw, box, label, color, small=False):
+    rounded(draw, box, radius=11 if small else 14, fill=(255,255,255), outline=color, width=2)
+    f = fit_font(label, box[2]-box[0]-16, 14 if small else 16, 10, True)
+    bbox = draw.textbbox((0,0), label, font=f)
+    tw, th = bbox[2]-bbox[0], bbox[3]-bbox[1]
+    draw.text(((box[0]+box[2]-tw)/2, (box[1]+box[3]-th)/2-bbox[1]), label, font=f, fill=color)
+
+
+def draw_background():
+    img = Image.new("RGB", (W, H), BG)
+    # Subtle soft gradient-like glow, still predominantly white.
+    glow = Image.new("RGBA", (W, H), (0,0,0,0))
+    gd = ImageDraw.Draw(glow)
+    gd.ellipse((-120, -120, 420, 420), fill=(148, 110, 255, 28))
+    gd.ellipse((760, 80, 1180, 520), fill=(64, 156, 255, 22))
+    gd.ellipse((380, 1350, 900, 1920), fill=(90, 220, 177, 18))
+    glow = glow.filter(ImageFilter.GaussianBlur(100))
+    return Image.alpha_composite(img.convert("RGBA"), glow).convert("RGB")
+
+
+def draw_topic_flow(draw, box, architecture: dict):
     x1, y1, x2, y2 = box
-    fnt = fit_font(draw, label, x2 - x1 - 18, 20, 12, True)
-    draw_centered(draw, (x1 + 8, y1 + 8, x2 - 8, y1 + 42), label, fnt, color)
+    nodes = architecture.get("nodes") or []
+    if not nodes:
+        nodes = [
+            {"label": "Input", "sub": ""},
+            {"label": "Process", "sub": ""},
+            {"label": "Output", "sub": ""},
+        ]
 
-    if sub:
-        sf = fit_font(draw, sub, x2 - x1 - 16, 13, 10, False)
-        draw_centered(
-            draw,
-            (x1 + 8, y2 - 29, x2 - 8, y2 - 6),
-            sub,
-            sf,
-            MUTED,
-        )
+    # Keep labels short enough for visual layout.
+    colors = [BLUE, PURPLE, GREEN, ORANGE, CYAN]
+    n = min(len(nodes), 6)
+    nodes = nodes[:n]
 
-
-def draw_icon(draw, center, color, kind="dot", size=22):
-    x, y = center
-
-    if kind == "people":
-        draw.ellipse(
-            (x - size, y - size, x - 2, y + 2),
-            outline=color,
-            width=3,
-        )
-        draw.ellipse(
-            (x + 2, y - size, x + size, y + 2),
-            outline=color,
-            width=3,
-        )
-        draw.line(
-            (x - size - 4, y + 10, x + size + 4, y + 10),
-            fill=color,
-            width=3,
-        )
-    elif kind == "flow":
-        draw.line(
-            (x - size, y, x + size, y),
-            fill=color,
-            width=4,
-        )
-        draw.polygon(
-            [
-                (x + size, y),
-                (x + size - 10, y - 8),
-                (x + size - 10, y + 8),
-            ],
-            fill=color,
-        )
-    elif kind == "warning":
-        draw.polygon(
-            [
-                (x, y - size),
-                (x - size, y + size),
-                (x + size, y + size),
-            ],
-            outline=color,
-        )
-        draw.line((x, y - 7, x, y + 8), fill=color, width=3)
-        draw.ellipse((x - 2, y + 13, x + 2, y + 17), fill=color)
-    else:
-        draw.ellipse(
-            (x - size, y - size, x + size, y + size),
-            outline=color,
-            width=3,
-        )
-
-
-def draw_section_header(draw, x, y, title, color):
-    draw.text((x, y), title, font=font(26, True), fill=color)
-
-
-def draw_kafka_architecture(draw, box, primary, secondary, accent):
-    x1, y1, x2, y2 = box
-
-    draw_icon(draw, (x1 + 68, y1 + 165), secondary, "flow", 22)
-    draw.text(
-        (x1 + 25, y1 + 205),
-        "Producer",
-        font=font(18, True),
-        fill=TEXT,
-    )
-    draw_arrow(
-        draw,
-        (x1 + 100, y1 + 165),
-        (x1 + 165, y1 + 165),
-        secondary,
-    )
-
-    rounded(
-        draw,
-        (x1 + 165, y1 + 75, x1 + 430, y1 + 295),
-        radius=22,
-        fill=(255, 255, 255),
-        outline=primary,
-        width=2,
-    )
-    draw.text(
-        (x1 + 190, y1 + 94),
-        "Kafka Topic",
-        font=font(22, True),
-        fill=primary,
-    )
-
-    part_y = [y1 + 138, y1 + 195, y1 + 252]
-    colors = [primary, secondary, accent]
-
-    for idx, yy in enumerate(part_y):
-        rounded(
-            draw,
-            (x1 + 195, yy, x1 + 400, yy + 42),
-            radius=10,
-            fill=(251, 252, 254),
-            outline=colors[idx],
-            width=2,
-        )
-        draw.text(
-            (x1 + 215, yy + 11),
-            f"Partition {idx}",
-            font=font(14, True),
-            fill=TEXT,
-        )
-
-    rounded(
-        draw,
-        (x1 + 495, y1 + 50, x1 + 755, y1 + 320),
-        radius=22,
-        fill=(255, 255, 255),
-        outline=accent,
-        width=2,
-    )
-    draw.text(
-        (x1 + 525, y1 + 72),
-        "Consumer Group",
-        font=font(22, True),
-        fill=accent,
-    )
-
-    consumer_boxes = [
-        (x1 + 525, y1 + 120, x1 + 730, y1 + 168, "Consumer 1", primary),
-        (x1 + 525, y1 + 184, x1 + 730, y1 + 232, "Consumer 2", accent),
-        (x1 + 525, y1 + 248, x1 + 730, y1 + 296, "Consumer 3", secondary),
-    ]
-
-    for bx1, by1, bx2, by2, label, color in consumer_boxes:
-        rounded(
-            draw,
-            (bx1, by1, bx2, by2),
-            radius=10,
-            fill=(255, 255, 255),
-            outline=color,
-            width=2,
-        )
-        draw_centered(
-            draw,
-            (bx1 + 5, by1 + 4, bx2 - 5, by2 - 4),
-            label,
-            font(15, True),
-            TEXT,
-        )
-
-    for yy, color, target_y in zip(part_y, colors, [144, 208, 272]):
-        draw_arrow(
-            draw,
-            (x1 + 430, yy + 20),
-            (x1 + 495, y1 + target_y),
-            color,
-            3,
-        )
-
-    rounded(
-        draw,
-        (x1 + 790, y1 + 85, x2 - 20, y1 + 285),
-        radius=20,
-        fill=(255, 255, 255),
-        outline=secondary,
-        width=2,
-    )
-    draw.text(
-        (x1 + 815, y1 + 108),
-        "Group",
-        font=font(19, True),
-        fill=secondary,
-    )
-    draw.text(
-        (x1 + 815, y1 + 134),
-        "Coordinator",
-        font=font(19, True),
-        fill=secondary,
-    )
-    draw_text(
-        draw,
-        (x1 + 815, y1 + 178),
-        "Membership • assignments • rebalance",
-        font(14),
-        fill=MUTED,
-        max_width=205,
-        max_lines=3,
-        line_gap=2,
-    )
-    draw_arrow(
-        draw,
-        (x1 + 755, y1 + 185),
-        (x1 + 790, y1 + 185),
-        accent,
-        3,
-    )
-
-
-def draw_generic_flow(draw, box, primary, secondary, accent, kind):
-    x1, y1, x2, y2 = box
-
-    labels = {
-        "java_runtime": [
-            ("Source", secondary),
-            ("Bytecode", primary),
-            ("JVM", accent),
-            ("JIT", primary),
-        ],
-        "spring_request": [
-            ("Client", secondary),
-            ("Filters", primary),
-            ("Service", accent),
-            ("Database", secondary),
-        ],
-        "aws_flow": [
-            ("Client", secondary),
-            ("API", primary),
-            ("Compute", accent),
-            ("Data", secondary),
-        ],
-        "redis_cache": [
-            ("Client", secondary),
-            ("Redis", primary),
-            ("Database", accent),
-            ("API", secondary),
-        ],
-        "sql_query": [
-            ("Query", secondary),
-            ("Index", primary),
-            ("Table", accent),
-            ("Result", secondary),
-        ],
-        "docker_container": [
-            ("Code", secondary),
-            ("Image", primary),
-            ("Container", accent),
-            ("App", secondary),
-        ],
-        "observability": [
-            ("Alert", secondary),
-            ("Trace", primary),
-            ("Root Cause", accent),
-            ("Fix", secondary),
-        ],
-        "generic": [
-            ("Input", secondary),
-            ("Process", primary),
-            ("Output", accent),
-            ("Impact", secondary),
-        ],
-    }
-
-    items = labels.get(kind, labels["generic"])
-    step = (x2 - x1 - 40) / len(items)
-    boxes = []
-
-    for i, (label, color) in enumerate(items):
-        bx1 = int(x1 + 20 + i * step)
-        bx2 = int(bx1 + step - 18)
-        by1 = int(y1 + 120)
-        by2 = int(y1 + 200)
-
-        draw_node(
-            draw,
-            (bx1, by1, bx2, by2),
-            label,
-            color,
-        )
-        boxes.append((bx1, by1, bx2, by2))
-
-        if i > 0:
-            previous = boxes[i - 1]
+    arch_type = str(architecture.get("type", "linear_flow")).lower()
+    if arch_type in {"comparison", "branching_flow"} and n >= 3:
+        # Center hub with two/three branches.
+        hub_w, hub_h = 170, 72
+        cx = (x1+x2)//2
+        hub = (cx-hub_w//2, y1+95, cx+hub_w//2, y1+95+hub_h)
+        draw_chip(draw, hub, str(nodes[0]["label"]), colors[0])
+        branch = nodes[1:5]
+        start_y = y1 + 20
+        step = max(86, (y2-y1-80)//max(1,len(branch)))
+        for i, node in enumerate(branch):
+            yy = start_y + i*step
+            bx = (x1+30, yy, x1+255, yy+64) if i % 2 == 0 else (x2-255, yy, x2-30, yy+64)
+            color = colors[(i+1)%len(colors)]
+            draw_chip(draw, bx, str(node["label"]), color)
             draw_arrow(
                 draw,
-                (previous[2], (previous[1] + previous[3]) // 2),
-                (bx1, (by1 + by2) // 2),
+                (hub[0] if bx[2] < hub[0] else hub[2], (hub[1]+hub[3])//2),
+                (bx[2] if bx[2] < hub[0] else bx[0], (bx[1]+bx[3])//2),
                 color,
-                3,
+                3
             )
+        return
+
+    if arch_type in {"layered_architecture"}:
+        layer_h = min(62, (y2-y1-60)//n)
+        for i, node in enumerate(nodes):
+            yy = y1+30+i*(layer_h+8)
+            color = colors[i%len(colors)]
+            rounded(draw, (x1+60, yy, x2-60, yy+layer_h), radius=15, fill=(255,255,255), outline=color, width=2)
+            label = str(node["label"])
+            sub = str(node.get("sub",""))
+            draw_chip(draw, (x1+75, yy+9, x1+250, yy+layer_h-9), label, color, small=True)
+            if sub:
+                text_block(draw, (x1+270, yy+15), sub, fit_font(sub, x2-x1-340, 14, 10, False),
+                           fill=MUTED, width=x2-x1-340, max_lines=2)
+        return
+
+    # Default linear visual; the actual Gemini nodes are the content.
+    total_w = x2-x1-70
+    gap = 28
+    node_w = max(125, min(190, int((total_w-gap*(n-1))/n)))
+    y = (y1+y2)//2 - 38
+    start_x = x1 + (x2-x1-(node_w*n+gap*(n-1)))//2
+    node_boxes = []
+
+    for i, node in enumerate(nodes):
+        xx = start_x+i*(node_w+gap)
+        color = colors[i%len(colors)]
+        box2 = (xx, y, xx+node_w, y+76)
+        draw_chip(draw, box2, str(node["label"]), color)
+        sub = str(node.get("sub","")).strip()
+        if sub:
+            text_block(draw, (xx+8, y+84), sub, fit_font(sub, node_w-16, 11, 9, False),
+                       fill=MUTED, width=node_w-16, max_lines=2)
+        node_boxes.append(box2)
+        if i:
+            draw_arrow(draw, (node_boxes[i-1][2], y+38), (box2[0], y+38), color, 3)
+
+    # If Gemini supplied explicit connection semantics, show a small legend.
+    connections = architecture.get("connections") or []
+    if connections:
+        summary = "  •  ".join(str(c) for c in connections[:3])
+        f = fit_font(summary, x2-x1-40, 12, 9, False)
+        text_block(draw, (x1+20, y2-34), summary, f, fill=MUTED, width=x2-x1-40, max_lines=1)
 
 
-def draw_architecture(draw, box, content, palette):
-    x1, y1, x2, y2 = box
-    primary = palette["primary"]
-    secondary = palette["secondary"]
-    accent = palette["accent"]
-
-    rounded(
-        draw,
-        box,
-        radius=26,
-        fill=PANEL_ALT,
-        outline=LINE,
-        width=2,
-    )
-
-    draw_section_header(
-        draw,
-        x1 + 28,
-        y1 + 22,
-        content["architecture"]["label"].title(),
-        primary,
-    )
-
-    kind = content["architecture"]["type"]
-
-    if kind == "kafka_consumer_group":
-        draw_kafka_architecture(
-            draw,
-            (x1 + 25, y1 + 58, x2 - 25, y2 - 25),
-            primary,
-            secondary,
-            accent,
-        )
-    else:
-        draw_generic_flow(
-            draw,
-            (x1 + 25, y1 + 65, x2 - 25, y2 - 25),
-            primary,
-            secondary,
-            accent,
-            kind,
-        )
+def draw_key_card(draw, box, idea, color):
+    x1,y1,x2,y2 = box
+    rounded(draw, box, radius=18, fill=(255,255,255), outline=BORDER, width=2)
+    draw.ellipse((x1+15,y1+16,x1+35,y1+36), outline=color, width=2)
+    title = str(idea.get("title","")).strip().title()
+    desc = str(idea.get("description","")).strip()
+    draw.text((x1+48,y1+13), title, font=fit_font(title, x2-x1-62, 15, 11, True), fill=color)
+    text_block(draw, (x1+15,y1+45), desc, fit_font(desc, x2-x1-30, 12, 9, False),
+               fill=MUTED, width=x2-x1-30, max_lines=3, gap=2)
 
 
-def draw_key_idea_card(draw, box, title, desc, color):
-    x1, y1, x2, y2 = box
-
-    rounded(
-        draw,
-        box,
-        radius=20,
-        fill=PANEL,
-        outline=LINE,
-        width=2,
-    )
-
-    draw_icon(
-        draw,
-        (x1 + 38, y1 + 38),
-        color,
-        "dot",
-        15,
-    )
-
-    draw.text(
-        (x1 + 66, y1 + 18),
-        title.title(),
-        font=font(17, True),
-        fill=color,
-    )
-
-    draw_text(
-        draw,
-        (x1 + 18, y1 + 62),
-        desc,
-        font(14),
-        fill=TEXT,
-        max_width=x2 - x1 - 36,
-        max_lines=3,
-        line_gap=3,
-    )
-
-
-def draw_example(draw, box, title, rows, primary, secondary, accent):
-    x1, y1, x2, y2 = box
-
-    rounded(
-        draw,
-        box,
-        radius=22,
-        fill=PANEL,
-        outline=LINE,
-        width=2,
-    )
-
-    draw_section_header(
-        draw,
-        x1 + 22,
-        y1 + 20,
-        title.title(),
-        primary,
-    )
-
-    y = y1 + 72
-    cols = [primary, secondary, accent]
-
-    for idx, row in enumerate(rows[:4]):
-        label, value = row
-        color = cols[idx % len(cols)]
-
-        rounded(
-            draw,
-            (x1 + 22, y, x1 + 112, y + 42),
-            radius=10,
-            fill=(251, 252, 254),
-            outline=color,
-            width=2,
-        )
-
-        draw_centered(
-            draw,
-            (x1 + 26, y + 3, x1 + 108, y + 39),
-            label,
-            font(14, True),
-            TEXT,
-        )
-
-        draw_arrow(
-            draw,
-            (x1 + 115, y + 21),
-            (x1 + 155, y + 21),
-            color,
-            2,
-        )
-
-        rounded(
-            draw,
-            (x1 + 165, y, x2 - 22, y + 42),
-            radius=10,
-            fill=(255, 255, 255),
-            outline=color,
-            width=2,
-        )
-
-        draw.text(
-            (x1 + 182, y + 11),
-            value,
-            font=font(13, True),
-            fill=TEXT,
-        )
-
-        y += 50
-
-
-def draw_failure(
-    draw,
-    box,
-    title,
-    before,
-    after,
-    primary,
-    secondary,
-    accent,
-):
-    x1, y1, x2, y2 = box
-
-    rounded(
-        draw,
-        box,
-        radius=22,
-        fill=PANEL_ALT,
-        outline=LINE,
-        width=2,
-    )
-
-    draw_section_header(
-        draw,
-        x1 + 22,
-        y1 + 18,
-        title.title(),
-        accent,
-    )
-
-    draw.text(
-        (x1 + 22, y1 + 58),
-        "Before",
-        font=font(15, True),
-        fill=secondary,
-    )
-
-    y = y1 + 92
-
-    for left, right in before[:3]:
-        rounded(
-            draw,
-            (x1 + 22, y, x1 + 128, y + 38),
-            radius=9,
-            fill=(255, 255, 255),
-            outline=secondary,
-            width=2,
-        )
-        draw_centered(
-            draw,
-            (x1 + 25, y + 2, x1 + 125, y + 36),
-            left,
-            font(12, True),
-            secondary,
-        )
-        draw.text(
-            (x1 + 142, y + 9),
-            right,
-            font=font(12, False),
-            fill=TEXT,
-        )
-        y += 43
-
-    mid = (x1 + x2) // 2
-
-    draw.text(
-        (mid + 10, y1 + 58),
-        "After",
-        font=font(15, True),
-        fill=accent,
-    )
-
-    y = y1 + 92
-
-    for left, right in after[:3]:
-        rounded(
-            draw,
-            (mid + 10, y, mid + 116, y + 38),
-            radius=9,
-            fill=(255, 255, 255),
-            outline=accent,
-            width=2,
-        )
-        draw_centered(
-            draw,
-            (mid + 13, y + 2, mid + 113, y + 36),
-            left,
-            font(12, True),
-            accent,
-        )
-        draw.text(
-            (mid + 130, y + 9),
-            right,
-            font=font(12, False),
-            fill=TEXT,
-        )
-        y += 43
-
-
-def draw_practice_card(draw, box, text, color):
-    rounded(
-        draw,
-        box,
-        radius=18,
-        fill=PANEL,
-        outline=color,
-        width=2,
-    )
-
-    draw_icon(
-        draw,
-        (box[0] + 24, box[1] + 24),
-        color,
-        "dot",
-        11,
-    )
-
-    draw_text(
-        draw,
-        (box[0] + 46, box[1] + 12),
-        text,
-        font(13, False),
-        fill=TEXT,
-        max_width=box[2] - box[0] - 60,
-        max_lines=5,
-        line_gap=2,
-    )
-
-
-def draw_use_cases(draw, box, use_cases, colors):
-    x1, y1, x2, y2 = box
-    rounded(
-        draw,
-        box,
-        radius=22,
-        fill=PANEL,
-        outline=LINE,
-        width=2,
-    )
-
-    cols = max(1, min(4, len(use_cases)))
-    width = (x2 - x1 - 32 - (cols - 1) * 12) // cols
-
-    for i, use in enumerate(use_cases[:cols]):
-        bx1 = x1 + 16 + i * (width + 12)
-        bx2 = bx1 + width
-        color = colors[i % len(colors)]
-
-        draw_icon(
-            draw,
-            ((bx1 + bx2) // 2, y1 + 25),
-            color,
-            "dot",
-            10,
-        )
-
-        fnt = fit_font(
-            draw,
-            use,
-            width - 20,
-            13,
-            10,
-            False,
-        )
-
-        draw_centered(
-            draw,
-            (bx1 + 8, y1 + 44, bx2 - 8, y2 - 12),
-            use,
-            fnt,
-            TEXT,
-        )
-
-
-def draw_branding(draw):
-    draw.text(
-        (60, H - 50),
-        "CodeWithKambojShubham",
-        font=font(20, True),
-        fill=TEXT,
-    )
-    draw.text(
-        (750, H - 50),
-        "Learn • Build • Grow",
-        font=font(15, False),
-        fill=MUTED,
-    )
+def draw_simple_list(draw, box, title, items, accent):
+    x1,y1,x2,y2 = box
+    rounded(draw, box, radius=20, fill=(255,255,255), outline=BORDER, width=2)
+    draw.text((x1+18,y1+16), str(title).title(), font=font(22,True), fill=accent)
+    y = y1+56
+    for i, item in enumerate(items[:4]):
+        color = [accent, BLUE, GREEN, ORANGE][i%4]
+        draw.ellipse((x1+18,y+6,x1+31,y+19), outline=color, width=2)
+        text_block(draw, (x1+42,y), str(item), fit_font(str(item), x2-x1-58, 13, 10, False),
+                   fill=TEXT, width=x2-x1-58, max_lines=2, gap=2)
+        y += 42

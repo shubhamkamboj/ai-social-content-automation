@@ -1,124 +1,130 @@
 from __future__ import annotations
 
 from pathlib import Path
-
-from PIL import Image, ImageDraw
+from PIL import ImageDraw
 
 from src.content.content_builder import build_content
 from src.infographic.drawing import (
-    W, H, BG, TEXT, WHITE, MUTED, LINE, PANEL,
-    font, fit_font, rounded, draw_text, draw_section_header,
-    draw_architecture, draw_key_idea_card, draw_example, draw_failure,
-    draw_practice_card, draw_use_cases, draw_branding
+    W, H, TEXT, MUTED, PANEL, PANEL_ALT, BORDER, BLUE, PURPLE, GREEN, ORANGE, CYAN,
+    font, fit_font, text_width, text_block, rounded, draw_background, draw_topic_flow,
+    draw_key_card, draw_simple_list
 )
-from src.infographic.visual_templates import template_for, palette_for
-
-
-def _background() -> Image.Image:
-    img = Image.new("RGB", (W, H), BG)
-    draw = ImageDraw.Draw(img)
-
-    # Soft radial-ish glow using layered circles.
-    for center, color, radius in [
-        ((160, 180), (30, 22, 70), 220),
-        ((930, 350), (22, 30, 80), 260),
-        ((720, 1450), (33, 20, 70), 260),
-    ]:
-        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        ld = ImageDraw.Draw(layer)
-        x, y = center
-        ld.ellipse((x-radius, y-radius, x+radius, y+radius), fill=(*color, 120))
-        layer = layer.filter(__import__("PIL").ImageFilter.GaussianBlur(90))
-        img = Image.alpha_composite(img.convert("RGBA"), layer).convert("RGB")
-
-    return img
 
 
 def create_infographic(item: dict, output_path: str) -> str:
     content = build_content(item)
-    template = template_for(content["category"])
-    palette = palette_for(template)
-
-    img = _background().convert("RGB")
+    img = draw_background()
     draw = ImageDraw.Draw(img)
 
     # Outer frame
-    rounded(draw, (30, 30, W-30, H-30), radius=36, fill=BG, outline=LINE, width=2)
+    rounded(draw, (28, 28, W-28, H-28), radius=34, fill=(255,255,255), outline=BORDER, width=2)
 
-    # Header brand/category chip
-    rounded(draw, (60, 55, 260, 104), radius=18, fill=(31, 18, 56), outline=palette["primary"], width=2)
-    draw.text((82, 68), content["category"].replace("_", " ").title(), font=font(18, True), fill=WHITE)
-    draw.text((765, 68), "CodeWithKambojShubham", font=font(14, True), fill=MUTED)
+    # Header chip
+    category = str(content.get("category", "tech")).replace("_", " ").title()
+    rounded(draw, (55, 50, 250, 94), radius=15, fill=(247, 241, 255), outline=PURPLE, width=2)
+    draw.text((72, 61), category, font=font(16, True), fill=PURPLE)
+    brand = "CodeWithKambojShubham"
+    bf = fit_font(brand, 260, 13, 9, True)
+    draw.text((W-60-text_width(draw, brand, bf), 62), brand, font=bf, fill=MUTED)
 
-    # Hero title
-    title = content["title"].strip()
-    title_font = fit_font(draw, title, 930, 60, 34, True)
-    draw.text((60, 130), title, font=title_font, fill=WHITE)
+    # Title — normal title case, never forced to ALL CAPS.
+    title = str(content.get("title", "")).strip()
+    tf = fit_font(title, 930, 56, 34, True)
+    draw.text((55, 112), title, font=tf, fill=TEXT)
 
-    y = 130 + title_font.size + 14
-    tagline_font = fit_font(draw, content["tagline"].title(), 930, 24, 16, True)
-    draw.text((60, y), content["tagline"], font=tagline_font, fill=palette["secondary"])
-
-    y += tagline_font.size + 12
-
-    # Intro divider
-    draw.line((60, y, 1020, y), fill=palette["primary"], width=3)
-    y += 16
+    tagline = str(content.get("tagline", "")).strip()
+    sub_y = 112 + tf.size + 8
+    sf = fit_font(tagline, 900, 18, 12, False)
+    draw.text((55, sub_y), tagline, font=sf, fill=BLUE)
+    draw.line((55, sub_y+sf.size+10, W-55, sub_y+sf.size+10), fill=PURPLE, width=2)
 
     # Overview
-    overview_h = 150
-    rounded(draw, (60, y, 1020, y+overview_h), radius=22, fill=PANEL, outline=LINE, width=2)
-    draw_section_header(draw, 86, y+20, "AT A GLANCE", palette["primary"])
-    draw_text(draw, (86, y+58), content["overview"], font(18, False), fill=WHITE, max_width=880, max_lines=3, line_gap=5)
-    y += overview_h + 18
+    y = sub_y + sf.size + 28
+    rounded(draw, (55, y, W-55, y+145), radius=20, fill=PANEL, outline=BORDER, width=2)
+    draw.text((78, y+17), "At a glance", font=font(21, True), fill=PURPLE)
+    overview = str(content.get("overview", "")).strip()
+    text_block(draw, (78, y+55), overview, fit_font(overview, 850, 17, 12, False),
+               fill=TEXT, width=850, max_lines=4, gap=4)
 
-    # Architecture (largest visual)
-    arch_h = 380
-    draw_architecture(draw, (60, y, 1020, y+arch_h), content, palette)
+    # Main architecture panel
+    y += 163
+    arch_h = 330
+    rounded(draw, (55, y, W-55, y+arch_h), radius=22, fill=PANEL_ALT, outline=BORDER, width=2)
+    arch = content.get("architecture") or {}
+    arch_title = str(arch.get("label") or arch.get("title") or "How it works").strip()
+    draw.text((78, y+17), arch_title.title(), font=font(23, True), fill=PURPLE)
+    draw_topic_flow(draw, (75, y+60, W-75, y+arch_h-20), arch)
+
+    # Key ideas
     y += arch_h + 18
-
-    # Key idea cards
-    draw_section_header(draw, 60, y, "KEY IDEAS", palette["primary"])
-    y += 45
-    cols = 2
-    gap = 14
-    card_w = (960-gap)//cols
-    card_h = 115
-    for i, (head, desc) in enumerate(content["key_ideas"][:4]):
-        col = i % cols
-        row = i // cols
-        x = 60 + col*(card_w+gap)
-        yy = y + row*(card_h+gap)
-        draw_key_idea_card(draw, (x, yy, x+card_w, yy+card_h), head, desc, [palette["secondary"], palette["accent"], palette["primary"], palette["secondary"]][i])
-    y += 2*card_h + gap + 18
-
-    # Example + failure row
-    row_h = 240
-    left_w = 470
-    draw_example(draw, (60, y, 60+left_w, y+row_h), content["example_title"], content["example_rows"], palette["primary"], palette["secondary"], palette["accent"])
-    draw_failure(draw, (60+left_w+20, y, 1020, y+row_h), content["failure_title"], content["failure_before"], content["failure_after"], palette["primary"], palette["secondary"], palette["accent"])
-    y += row_h + 18
-
-    # Best practices
-    draw_section_header(draw, 60, y, "BEST PRACTICES", palette["primary"])
-    y += 42
-    bp_w = (960-3*12)//4
-    bp_h = 122
-    for i, practice in enumerate(content["best_practices"][:4]):
-        x = 60 + i*(bp_w+12)
-        color = [palette["accent"], palette["primary"], palette["secondary"], palette["accent"]][i]
-        draw_practice_card(draw, (x, y, x+bp_w, y+bp_h), practice, color)
-    y += bp_h + 18
-
-    # Use cases
-    draw_section_header(draw, 60, y, "USE CASES", palette["primary"])
+    draw.text((55, y), "Key ideas", font=font(23, True), fill=PURPLE)
     y += 38
-    draw_use_cases(draw, (60, y, 1020, y+92), content["use_cases"], [palette["secondary"], palette["primary"], palette["accent"], palette["secondary"]])
 
-    # Branding footer (no AUTO-GENERATED / TECH CHEAT SHEET)
-    draw_branding(draw)
+    ideas = content.get("key_ideas") or []
+    idea_h = 104
+    gap = 12
+    card_w = (W-110-gap)//2
+    for i, idea in enumerate(ideas[:4]):
+        x = 55+(i%2)*(card_w+gap)
+        yy = y+(i//2)*(idea_h+gap)
+        if isinstance(idea, dict):
+            draw_key_card(draw, (x,yy,x+card_w,yy+idea_h), idea,
+                          [BLUE, GREEN, ORANGE, PURPLE][i%4])
 
-    out = Path(output_path)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    img.save(out, "PNG", optimize=True)
+    y += 2*(idea_h+gap)-gap+16
+
+    # Examples / failure impact side-by-side
+    panel_h = 190
+    left = (55, y, 520, y+panel_h)
+    right = (540, y, W-55, y+panel_h)
+    rounded(draw, left, radius=20, fill=(255,255,255), outline=BORDER, width=2)
+    rounded(draw, right, radius=20, fill=(255,255,255), outline=BORDER, width=2)
+
+    example_title = str(content.get("example_title","Example")).title()
+    draw.text((74,y+15), example_title, font=font(19,True), fill=ORANGE)
+    rows = content.get("example_rows") or []
+    yy = y+52
+    for row in rows[:3]:
+        if isinstance(row,(list,tuple)):
+            vals = [str(v) for v in row[:2]]
+        else:
+            vals = [str(row), ""]
+        rounded(draw,(74,yy,174,yy+34),radius=9,fill=(255,255,255),outline=ORANGE,width=1)
+        draw.text((86,yy+9),vals[0],font=fit_font(vals[0],80,11,8,True),fill=ORANGE)
+        text_block(draw,(188,yy+8),vals[1],fit_font(vals[1],280,11,8,False),fill=TEXT,width=280,max_lines=1)
+        yy += 42
+
+    failure_title = str(content.get("failure_title","Failure / Impact")).title()
+    draw.text((560,y+15), failure_title, font=font(19,True), fill=GREEN)
+    before = content.get("failure_before") or []
+    after = content.get("failure_after") or []
+    yy = y+53
+    for i in range(min(3,max(len(before),len(after)))):
+        b = before[i] if i<len(before) else ["",""]
+        a = after[i] if i<len(after) else ["",""]
+        left_text = " → ".join(map(str,b[:2]))
+        right_text = " → ".join(map(str,a[:2]))
+        draw.text((560,yy), left_text, font=fit_font(left_text,170,10,8,False), fill=MUTED)
+        draw.text((738,yy), "→", font=font(15,True), fill=GREEN)
+        draw.text((765,yy), right_text, font=fit_font(right_text,185,10,8,False), fill=TEXT)
+        yy += 38
+
+    y += panel_h + 18
+
+    # Best practices and use cases
+    bottom_h = H-80-y
+    col_gap=16
+    col_w=(W-110-col_gap)//2
+    best = content.get("best_practices") or []
+    cases = content.get("use_cases") or []
+    draw_simple_list(draw,(55,y,55+col_w,y+bottom_h),"Best practices",best,BLUE)
+    draw_simple_list(draw,(55+col_w+col_gap,y,W-55,y+bottom_h),"Use cases",cases,PURPLE)
+
+    # Footer
+    draw.text((55,H-50),"CodeWithKambojShubham",font=font(17,True),fill=TEXT)
+    draw.text((W-300,H-50),"Learn • Build • Grow",font=font(13,False),fill=MUTED)
+
+    out=Path(output_path)
+    out.parent.mkdir(parents=True,exist_ok=True)
+    img.save(out,"PNG",optimize=True)
     return str(out)
