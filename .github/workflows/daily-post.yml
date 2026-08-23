@@ -21,10 +21,6 @@ jobs:
       STATE_FILE: state.json
       OUTPUT_DIR: generated
 
-      GEMINI_ENABLED: ${{ vars.GEMINI_ENABLED || 'true' }}
-      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -73,10 +69,6 @@ jobs:
       INSTAGRAM_ACCOUNT_ID: ${{ vars.INSTAGRAM_ACCOUNT_ID }}
 
       PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/generated
-
-      GEMINI_ENABLED: ${{ vars.GEMINI_ENABLED || 'true' }}
-      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
     steps:
       - name: Checkout latest generated assets
@@ -144,6 +136,33 @@ jobs:
           git add state.json
           git diff --cached --quiet || git commit -m "chore: update Reel publish status"
           git push
+
+      - name: Cleanup generated assets after successful publish
+        if: ${{ success() }}
+        shell: bash
+        run: |
+          set -e
+
+          echo "Removing generated assets after successful Instagram publish..."
+
+          find generated -mindepth 1 -maxdepth 1 -type f -delete || true
+
+          if find generated -mindepth 1 -maxdepth 1 -type f | grep -q .; then
+            echo "ERROR: generated folder is not empty after cleanup."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A generated
+
+          if git diff --cached --quiet; then
+            echo "Generated folder already clean."
+          else
+            git commit -m "chore: cleanup generated assets after publish"
+            git push origin "${GITHUB_REF_NAME}"
+          fi
 
   topic_reminder:
     name: Low topic queue reminder

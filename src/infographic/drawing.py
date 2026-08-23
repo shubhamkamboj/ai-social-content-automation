@@ -4,7 +4,10 @@ from math import atan2, cos, sin, pi
 
 from PIL import Image, ImageDraw, ImageFilter
 
-W, H = 1080, 1800
+BASE_W, BASE_H = 1080, 1800
+RENDER_SCALE = 2
+W, H = BASE_W, BASE_H
+OUTPUT_W, OUTPUT_H = BASE_W * RENDER_SCALE, BASE_H * RENDER_SCALE
 
 BG = (255, 255, 255)
 PANEL = (248, 249, 252)
@@ -99,6 +102,8 @@ def draw_chip(draw, box, label, color, small=False):
 
 
 def draw_background():
+    # Draw at the original logical 1080x1800 layout; generator upscales
+    # the finished composition to a true 2160x3600 output PNG.
     img = Image.new("RGB", (W, H), BG)
     # Subtle soft gradient-like glow, still predominantly white.
     glow = Image.new("RGBA", (W, H), (0,0,0,0))

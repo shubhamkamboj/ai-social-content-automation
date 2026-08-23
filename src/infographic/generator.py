@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from pathlib import Path
-from PIL import ImageDraw
+from PIL import Image, ImageDraw
 
 from src.content.content_builder import build_content
 from src.infographic.drawing import (
-    W, H, TEXT, MUTED, PANEL, PANEL_ALT, BORDER, BLUE, PURPLE, GREEN, ORANGE, CYAN,
+    W, H, OUTPUT_W, OUTPUT_H, TEXT, MUTED, PANEL, PANEL_ALT, BORDER, BLUE, PURPLE, GREEN, ORANGE, CYAN,
     font, fit_font, text_width, text_block, rounded, draw_background, draw_topic_flow,
     draw_key_card, draw_simple_list
 )
@@ -124,7 +124,19 @@ def create_infographic(item: dict, output_path: str) -> str:
     draw.text((55,H-50),"CodeWithKambojShubham",font=font(17,True),fill=TEXT)
     draw.text((W-300,H-50),"Learn • Build • Grow",font=font(13,False),fill=MUTED)
 
-    out=Path(output_path)
-    out.parent.mkdir(parents=True,exist_ok=True)
-    img.save(out,"PNG",optimize=True)
+    out = Path(output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    # Export high-resolution 9:15 artwork (2160x3600).
+    # Lanczos gives the cleanest available raster upscale for the existing
+    # composition and keeps text/shapes significantly sharper when zoomed.
+    hd = img.resize((OUTPUT_W, OUTPUT_H), Image.Resampling.LANCZOS)
+    hd.save(
+        out,
+        "PNG",
+        optimize=True,
+        compress_level=6,
+        dpi=(300, 300),
+    )
+
     return str(out)
