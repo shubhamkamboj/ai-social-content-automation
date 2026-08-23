@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw
 
 from src.content.content_builder import build_content
 from src.infographic.drawing import (
-    W, H, BG, WHITE, MUTED, LINE, PANEL,
+    W, H, BG, TEXT, MUTED, LINE, PANEL,
     font, fit_font, rounded, draw_text, draw_section_header,
     draw_architecture, draw_key_idea_card, draw_example, draw_failure,
     draw_practice_card, draw_use_cases, draw_branding
@@ -47,17 +47,20 @@ def create_infographic(item: dict, output_path: str) -> str:
 
     # Header brand/category chip
     rounded(draw, (60, 55, 260, 104), radius=18, fill=(31, 18, 56), outline=palette["primary"], width=2)
-    draw.text((82, 68), content["category"].upper(), font=font(18, True), fill=WHITE)
-    draw.text((765, 68), "CodeWithKambojShubham", font=font(14, True), fill=MUTED)
+    category_label = content["category"].replace("_", " ").title()
+    draw.text((82, 68), category_label, font=font(18, True), fill=TEXT)
+    draw.text((765, 68), "CodeWithKambojShubham", font=font(14, True), fill=TEXT)
 
     # Hero title
-    title = content["title"].upper()
+    # Keep content headings in normal title/camel-style casing instead of ALL CAPS.
+    # Example: "API Gateway" rather than "API GATEWAY".
+    title = content["title"].strip()
     title_font = fit_font(draw, title, 930, 60, 34, True)
-    draw.text((60, 130), title, font=title_font, fill=WHITE)
+    draw.text((60, 130), title, font=title_font, fill=TEXT)
 
     y = 130 + title_font.size + 14
     tagline_font = fit_font(draw, content["tagline"], 930, 24, 16, True)
-    draw.text((60, y), content["tagline"], font=tagline_font, fill=palette["secondary"])
+    draw.text((60, y), content["tagline"].title(), font=tagline_font, fill=palette["secondary"])
 
     y += tagline_font.size + 12
 

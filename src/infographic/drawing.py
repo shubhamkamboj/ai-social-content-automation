@@ -8,13 +8,14 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 W, H = 1080, 1800
 
-BG = (7, 8, 16)
-PANEL = (17, 16, 31)
-PANEL_ALT = (22, 19, 40)
-WHITE = (244, 242, 250)
-MUTED = (166, 164, 187)
-LINE = (70, 55, 102)
-DARK_LINE = (38, 32, 59)
+BG = (255, 255, 255)
+PANEL = (248, 249, 252)
+PANEL_ALT = (244, 246, 250)
+TEXT = (25, 28, 38)
+WHITE = (25, 28, 38)  # Backward-compatible alias for existing drawing calls.
+MUTED = (93, 99, 116)
+LINE = (178, 184, 198)
+DARK_LINE = (214, 218, 226)
 
 
 def font(size: int, bold: bool = False):
@@ -71,7 +72,7 @@ def draw_text(draw, xy, text, fnt, fill=WHITE, max_width=400, line_gap=5, max_li
         lines = lines[:max_lines]
 
     for current in lines:
-        draw.text((x, y), current, font=fnt, fill=fill)
+            draw.text((x, y), current, font=fnt, fill=fill)
         y += fnt.size + line_gap
 
     return y
@@ -103,7 +104,7 @@ def draw_arrow(draw, start, end, color, width=4):
 
 
 def draw_node(draw, box, label, color, sub=None):
-    rounded(draw, box, radius=14, fill=(20, 18, 38), outline=color, width=2)
+    rounded(draw, box, radius=14, fill=(255, 255, 255), outline=color, width=2)
     x1, y1, x2, y2 = box
     fnt = fit_font(draw, label, x2-x1-18, 20, 12, True)
     draw_centered(draw, (x1+8, y1+8, x2-8, y1+42), label, fnt, color)
@@ -142,7 +143,7 @@ def draw_kafka_architecture(draw, box, primary, secondary, accent):
 
     # Topic
     rounded(draw, (x1+165, y1+75, x1+430, y1+295), radius=22, fill=(19,17,38), outline=primary, width=2)
-    draw.text((x1+190, y1+94), "KAFKA TOPIC", font=font(22, True), fill=primary)
+    draw.text((x1+190, y1+94), "Kafka Topic", font=font(22, True), fill=primary)
     part_y = [y1+138, y1+195, y1+252]
     colors = [primary, secondary, accent]
     for idx, yy in enumerate(part_y):
@@ -151,7 +152,7 @@ def draw_kafka_architecture(draw, box, primary, secondary, accent):
 
     # Consumers
     rounded(draw, (x1+495, y1+50, x1+755, y1+320), radius=22, fill=(18,18,39), outline=accent, width=2)
-    draw.text((x1+525, y1+72), "CONSUMER GROUP", font=font(22, True), fill=accent)
+    draw.text((x1+525, y1+72), "Consumer Group", font=font(22, True), fill=accent)
     consumer_boxes = [
         (x1+525, y1+120, x1+730, y1+168, "CONSUMER 1", primary),
         (x1+525, y1+184, x1+730, y1+232, "CONSUMER 2", accent),
@@ -166,8 +167,8 @@ def draw_kafka_architecture(draw, box, primary, secondary, accent):
 
     # Coordinator
     rounded(draw, (x1+790, y1+85, x2-20, y1+285), radius=20, fill=(19,18,39), outline=secondary, width=2)
-    draw.text((x1+815, y1+108), "GROUP", font=font(19, True), fill=secondary)
-    draw.text((x1+815, y1+134), "COORDINATOR", font=font(19, True), fill=secondary)
+    draw.text((x1+815, y1+108), "Group", font=font(19, True), fill=secondary)
+    draw.text((x1+815, y1+134), "Coordinator", font=font(19, True), fill=secondary)
     draw_text(draw, (x1+815, y1+178), "membership • assignments • rebalance", font(14), fill=MUTED, max_width=205, max_lines=3, line_gap=2)
     draw_arrow(draw, (x1+755, y1+185), (x1+790, y1+185), accent, 3)
 
@@ -286,5 +287,5 @@ def draw_use_cases(draw, box, use_cases, colors):
 
 
 def draw_branding(draw):
-    draw.text((60, H-50), "CodeWithKambojShubham", font=font(20, True), fill=WHITE)
+    draw.text((60, H-50), "CodeWithKambojShubham", font=font(20, True), fill=TEXT)
     draw.text((750, H-50), "LEARN • BUILD • GROW", font=font(15, False), fill=MUTED)
